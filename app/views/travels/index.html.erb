@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<h1>Travels Index Page</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Starting |</th>
+      <th>Destination |</th>
+      <th>Date |</th>
+      <th>Time |</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @travels.each do |travel| %>
+      <tr>
+        <td><%= travel.starting_station.city %></td>
+        <td><%= travel.destination_station.city %></td>
+        <td><%= travel.date %></td>
+        <td><%= travel.time %></td>
+        <td><%= travel.duration %></td>
+        <td><%= link_to "Show", travel_path(travel), class: "show-travel" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

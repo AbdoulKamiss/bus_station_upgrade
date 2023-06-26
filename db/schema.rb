@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_26_140938) do
+ActiveRecord::Schema.define(version: 2023_06_26_150357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2023_06_26_140938) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_stations_on_code", unique: true
+  end
+
+  create_table "travels", force: :cascade do |t|
+    t.date "date", null: false
+    t.time "time", null: false
+    t.integer "duration", null: false
+    t.bigint "starting_station_id", null: false
+    t.bigint "destination_station_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["destination_station_id"], name: "index_travels_on_destination_station_id"
+    t.index ["starting_station_id"], name: "index_travels_on_starting_station_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +55,6 @@ ActiveRecord::Schema.define(version: 2023_06_26_140938) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "travels", "stations", column: "destination_station_id"
+  add_foreign_key "travels", "stations", column: "starting_station_id"
 end
