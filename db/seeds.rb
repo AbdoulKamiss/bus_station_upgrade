@@ -5,6 +5,77 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+DURATIONS = {
+    'KYS' => {
+        'KLK' => 720,
+        'SKS' => 960,
+        'SGO' => 840,
+        'MPI' => 1200,
+        'TBT' => 1620,
+        'GAO' => 1380,
+        'KDL' => 2280,
+        'MNK' => 1260,
+        'BKO' => 660
+    },
+    'KLK' => {
+        'SKS' => 420,
+        'SGO' => 180,
+        'MPI' => 540,
+        'TBT' => 930,
+        'GAO' => 760,
+        'KDL' => 1620,
+        'MNK' => 1280,
+        'BKO' => 45
+    },
+    'SKS' => {
+        'SGO' => 290,
+        'MPI' => 540,
+        'TBT' => 840,
+        'GAO' => 860,
+        'KDL' => 1500,
+        'MNK' => 1200,
+        'BKO' => 360
+    },
+    'SGO' => {
+        'MPI' => 360,
+        'TBT' => 780,
+        'GAO' => 960,
+        'KDL' => 1440,
+        'MNK' => 1140,
+        'BKO' => 210
+    },
+    'MPI' => {
+        'TBT' => 440,
+        'GAO' => 540,
+        'KDL' => 1080,
+        'MNK' => 780,
+        'BKO' => 540
+    },
+    'TBT' => {
+        'GAO' => 600,
+        'KDL' => 1200,
+        'MNK' => 860,
+        'BKO' => 960
+    },
+    'GAO' => {
+        'KDL' => 590,
+        'MNK' => 270,
+        'BKO' => 1020
+    },
+    'KDL' => {
+        'MNK' => 840,
+        'BKO' => 1620
+    },
+    'MNK' => {
+        'BKO' => 1320
+    },
+    'BKO' => {}
+}
+
+def get_duration(starting_station, destination_station)
+    DURATIONS[starting_station][destination_station] || DURATIONS[destination_station][starting_station]
+end
+
 ActiveRecord::Base.transaction do
     Station.destroy_all
 

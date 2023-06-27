@@ -1,24 +1,32 @@
-# README
+# BusLink
+### What is "BusLink"?
+BusLink is an application designed for bus stations to enable their 								
+passengers to register at home and reserve seats for city-to-city travel.								
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Environment
+- Ruby 3.0.1
+- Rails 6.0.6
+- PostgreSQL 15.3
 
-Things you may want to cover:
 
-* Ruby version
+### How to install in your computer
+```
+$ git clone https://github.com/AbdoulKamiss/bus_station.git
+$ cd bus_station
+$ bundle install
+$ yarn install --check-files
+$ rails db:create && rails db:migrate
+$ rails s
+```
 
-* System dependencies
+### Concept, database specification
+https://docs.google.com/spreadsheets/d/15ncN_yxSqJ6vShiC1CxW_yYuoiBb7CnqMmr7Wk8pFDY/edit?usp=sharing
 
-* Configuration
+### Wireframe design
+https://www.figma.com/file/1ibuG8LLrmBJDOvIcipxVO/Untitled?type=design&node-id=0-1&mode=design&t=MkEEKSKJKmWo2IQA-0
 
-* Database creation
+### ER diagram
+![ER](https://i.gyazo.com/67f68d9dc1c565dbfa3ef48ca3d87af8.png)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Screen transition diagram
+![Screen](https://i.gyazo.com/f5e15e23605218834c8b334289ea5659.png)
