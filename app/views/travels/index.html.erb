@@ -3,13 +3,21 @@
 <% end %>
 
 <h1>Travels Index Page</h1>
+<%= search_form_for @q, url: travels_path do |f| %>
+  <%= f.label :starting_station_city_or_destination_station_city_cont, "City" %>
+  <%= f.search_field :starting_station_city_or_destination_station_city_cont %>
+  <br>
+  <%= f.label :date_eq, "Date" %>
+  <%= f.date_field :date_eq %>
+  <%= f.submit "Search" %>
+<% end %>
 
 <table>
   <thead>
     <tr>
       <th>Starting |</th>
       <th>Destination |</th>
-      <th>Date |</th>
+      <th><%= sort_link(@q, :date, "Date") %> |</th>
       <th>Time |</th>
       <th>Duration</th>
     </tr>
@@ -23,12 +31,8 @@
         <td><%= travel.formatted_time %></td>
         <td><%= travel.formatted_duration %></td>
         <td class='td-booking'>
-            <%= button_to 'Book Flight',
-                new_booking_path,
-                method: :get,
-                params: { travel_id: travel.id },
-                id: 'booking-button' %>
-          </td>
+          <button  class="btn btn-light"><%= link_to 'Book Flight', new_booking_path, method: :get, params: { travel_id: travel.id } %></button>
+        </td>
       </tr>
     <% end %>
   </tbody>

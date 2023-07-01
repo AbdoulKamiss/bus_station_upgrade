@@ -3,7 +3,9 @@ class TravelsController < ApplicationController
     before_action :set_travel, only: %i[ show edit update destroy ]
 
     def index
-        @travels = Travel.all.page(params[:page])
+       # @travels = Travel.all.page(params[:page])
+        @q = Travel.ransack(params[:q])
+        @travels = @q.result(distinct: true).page(params[:page])
     end
 
     private
