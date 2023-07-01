@@ -1,8 +1,9 @@
 class TravelsController < ApplicationController
+    before_action :authenticate_user!, except: [:index]
     before_action :set_travel, only: %i[ show edit update destroy ]
 
     def index
-        @travels = Travel.all
+        @travels = Travel.all.page(params[:page])
     end
 
     private

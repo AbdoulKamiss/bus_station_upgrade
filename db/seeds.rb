@@ -76,10 +76,22 @@ def get_duration(starting_station, destination_station)
     DURATIONS[starting_station][destination_station] || DURATIONS[destination_station][starting_station]
 end
 
-ActiveRecord::Base.transaction do
-    Station.destroy_all
+def random_time
+    hours = Faker::Number.between(from: 0, to: 23)
+    minutes = [0, 15, 30, 45].sample
+  
+    time_string = "#{format('%02d', hours)}:#{format('%02d', minutes)}"
+    Time.strptime(time_string, '%H:%M')
+end
 
+ActiveRecord::Base.transaction do
+    Booking.destroy_all
+    Station.destroy_all
+    Travel.destroy_all
+
+    ActiveRecord::Base.connection.reset_pk_sequence!('bookings')
     ActiveRecord::Base.connection.reset_pk_sequence!('stations')
+    ActiveRecord::Base.connection.reset_pk_sequence!('travels')
 
     stations = []
     stations[0] = Station.create(code: 'KYS', name: 'Kayes Station', city: 'Kayes')
@@ -92,4 +104,19 @@ ActiveRecord::Base.transaction do
     stations[7] = Station.create(code: 'KDL', name: 'Kidal Station', city: 'Kidal')
     stations[8] = Station.create(code: 'MNK', name: 'Menaka Station', city: 'Menaka')
     stations[9] = Station.create(code: 'BKO', name: 'Bamako Station', city: 'Bamako')
+
+    Date.new(2023, 7, 1).upto(Date.new(2023, 7, 15)).each do |date|
+        stations.each do |starting_station|
+          stations.each do |destination_station|
+            next if starting_station == destination_station
+    
+            3.times { Travel.create(date: date,
+                                    time: random_time,
+                                    starting_station: starting_station,
+                                    destination_station: destination_station,
+                                    duration: get_duration(starting_station.code, destination_station.code))
+                      }
+            end
+        end
+    end
 end

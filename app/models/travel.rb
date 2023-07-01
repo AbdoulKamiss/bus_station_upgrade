@@ -9,5 +9,25 @@ class Travel < ApplicationRecord
     validates :date, presence: true
     validates :time, presence: true
     validates :duration, presence: true
+    before_save :validate_booking_limit
 
+    def formatted_date
+        date.strftime("%m/%d/%Y")
+    end
+    
+    def formatted_time
+        time.strftime('%H:%M')
+    end
+
+    def formatted_duration
+        "%dh %02dm" % duration.divmod(60)
+    end
+
+    private
+
+    def validate_booking_limit
+        if bookings.count >= 8
+            errors.add(:base, "Le voyage est complet. Aucune réservation supplémentaire n'est autorisée.")
+        end
+    end
 end

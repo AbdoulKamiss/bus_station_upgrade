@@ -1,0 +1,34 @@
+<h3>Complete Booking</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Starting</th>
+      <th>Destination</th>
+      <th>Date</th>
+      <th>Departure</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @travel.starting_station.city %></td>
+      <td><%= @travel.destination_station.city %></td>
+      <td><%= @travel.formatted_date %></td>
+      <td><%= @travel.formatted_time %></td>
+      <td><%= @travel.formatted_duration %></td>
+    </tr>
+  </tbody>
+</table>
+<h4>Users Details...</h4>
+
+  <%= form_with(model: @booking, local: true) do |form| %>
+    <%= form.hidden_field :travel_id, value: @travel.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <div id='confirmation-buttons'>
+      <%= link_to 'Cancel', root_path, id: 'cancel-booking' %>
+      <ion-icon name="airplane-sharp", id='booking-airplane'></ion-icon>
+      <%= form.submit 'Book Flight', id: 'book-travel' %>
+    </div>
+  <% end %>

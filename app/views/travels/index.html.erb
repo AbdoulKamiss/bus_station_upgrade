@@ -19,11 +19,18 @@
       <tr>
         <td><%= travel.starting_station.city %></td>
         <td><%= travel.destination_station.city %></td>
-        <td><%= travel.date %></td>
-        <td><%= travel.time %></td>
-        <td><%= travel.duration %></td>
-        <td><%= link_to "Show", travel_path(travel), class: "show-travel" %></td>
+        <td><%= travel.formatted_date %></td>
+        <td><%= travel.formatted_time %></td>
+        <td><%= travel.formatted_duration %></td>
+        <td class='td-booking'>
+            <%= button_to 'Book Flight',
+                new_booking_path,
+                method: :get,
+                params: { travel_id: travel.id },
+                id: 'booking-button' %>
+          </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @travels %>

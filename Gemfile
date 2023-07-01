@@ -45,6 +45,9 @@ group :development do
   gem 'letter_opener_web'
   gem 'rails_admin', '~> 3.0'
   gem 'cancancan'
+  gem 'faker'
+  gem 'kaminari'
+  gem 'ransack'
 end
 
 group :test do

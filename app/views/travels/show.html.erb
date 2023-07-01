@@ -6,9 +6,9 @@
 
 <p><%= @travel.starting_station.city %></p>
 <p><%= @travel.destination_station.city %></p>
-<p><%= @travel.date %></p>
-<p><%= @travel.time %></p>
-<p><%= @travel.duration %></p>
+<p><%= @travel.formatted_date %></p>
+<p><%= @travel.formatted_time %></p>
+<p><%= @travel.formatted_duration %></p>
 
 <%= link_to 'Book', edit_travel_path(@travel), id: "edit-travel" %> |
 <%= link_to 'Back', travels_path, id: "back" %>

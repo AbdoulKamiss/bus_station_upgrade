@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2023_06_27_075207) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.bigint "travels_id", null: false
+    t.bigint "travel_id", null: false
     t.string "confirmation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["travels_id"], name: "index_bookings_on_travels_id"
+    t.index ["travel_id"], name: "index_bookings_on_travel_id"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2023_06_27_075207) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "travels", column: "travels_id"
+  add_foreign_key "bookings", "travels"
   add_foreign_key "travels", "stations", column: "destination_station_id"
   add_foreign_key "travels", "stations", column: "starting_station_id"
   add_foreign_key "user_bookings", "bookings"

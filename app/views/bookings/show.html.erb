@@ -1,0 +1,70 @@
+<br>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Starting</th>
+      <th>Destination</th>
+      <th>Date</th>
+      <th>Departure</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @booking.travel.starting_station.city %></td>
+      <td><%= @booking.travel.destination_station.city %></td>
+      <td><%= @booking.travel.formatted_date %></td>
+      <td><%= @booking.travel.formatted_time %></td>
+      <td><%= @booking.travel.formatted_duration %></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id='confirmation-display'>Confirmation Number: <%= @booking.confirmation %></h3>
+
+<div class='ticket-container'>
+  <% @booking.users.each do |user| %>
+    <div class='ticket'>
+      <div class='logo-main logo ticket-item'>
+        <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
+        <span>Odin Air</span>
+      </div>
+      <div class='boarding-pass-main ticket-item'>Boarding Pass</div>
+      <div class='logo-stub logo ticket-item'>
+        <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
+        <span>Odin Air</span>
+      </div>
+      <div class='itinerary-main ticket-item'>
+        <span><%= @booking.travel.starting_station.code %></span>
+        <ion-icon name="airplane-sharp", id='airplane-direction'></ion-icon>
+        <span><%= @booking.travel.destination_station.code %></span>
+      </div>
+      <div class='passenger-stub ticket-item'>
+        <div class='ticket-header'>Passenger</div>
+        <div><%= @booking.users.name %></div>
+      </div>
+      <div class='origin-stub ticket-item'>
+        <div class='ticket-header'>Origin</div>
+        <div><%= @booking.travel.starting_station.code %></div>
+      </div>
+      <div class='destination-stub ticket-item stub-right'>
+        <div class='ticket-header'>Destination</div>
+        <div><%= @booking.travel.destination_station.code %></div>
+      </div>
+      <div class='passenger-main ticket-item'>
+        <div class='ticket-header'>Passenger</div>
+        <div><%= current_user.name %></div>
+      </div>
+      <div class='departure-main ticket-item'>
+        <div class='ticket-header'>Departure</div>
+        <div><%= @booking.travel.formatted_time %></div>
+      </div>
+      <div class='departure-stub ticket-item stub-right'>
+        <div class='ticket-header'>Departure</div>
+        <div><%= @booking.travel.formatted_time %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
