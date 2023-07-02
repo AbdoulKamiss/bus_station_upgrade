@@ -50,8 +50,6 @@ group :development do
   gem 'faker'
   gem 'kaminari'
   gem 'ransack'
-  gem 'bootstrap', '~> 4.4.1'
-  gem 'jquery-rails'
 end
 
 group :test do
