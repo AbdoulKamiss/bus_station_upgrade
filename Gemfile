@@ -50,6 +50,9 @@ group :development do
   gem 'faker'
   gem 'kaminari'
   gem 'ransack'
+  gem 'geocoder'
+  gem 'gmaps4rails'
+  gem 'dotenv-rails'
 end
 
 group :test do

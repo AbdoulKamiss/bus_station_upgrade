@@ -94,16 +94,16 @@ ActiveRecord::Base.transaction do
     ActiveRecord::Base.connection.reset_pk_sequence!('travels')
 
     stations = []
-    stations[0] = Station.create(code: 'KYS', name: 'Kayes Station', city: 'Kayes')
-    stations[1] = Station.create(code: 'KLK', name: 'Koulikoro Station', city: 'Koulikoro')
-    stations[2] = Station.create(code: 'SKS', name: 'Sikasso Station', city: 'Sikasso')
-    stations[3] = Station.create(code: 'SGO', name: 'Segou Station', city: 'Segou')
-    stations[4] = Station.create(code: 'MPI', name: 'Mopti Station', city: 'Mopti')
-    stations[5] = Station.create(code: 'TBT', name: 'Tombouctou Station', city: 'Tombouctou')
-    stations[6] = Station.create(code: 'GAO', name: 'Gao Station', city: 'Gao')
-    stations[7] = Station.create(code: 'KDL', name: 'Kidal Station', city: 'Kidal')
-    stations[8] = Station.create(code: 'MNK', name: 'Menaka Station', city: 'Menaka')
-    stations[9] = Station.create(code: 'BKO', name: 'Bamako Station', city: 'Bamako')
+    stations[0] = Station.create(code: 'KYS', name: 'Kayes Station', city: 'Kayes', latitude: '14.44693', longitude: '-11.44448')
+    stations[1] = Station.create(code: 'KLK', name: 'Koulikoro Station', city: 'Koulikoro', latitude: '12.86273', longitude: '-7.55985')
+    stations[2] = Station.create(code: 'SKS', name: 'Sikasso Station', city: 'Sikasso', latitude: '11.31755', longitude: '-5.66654')
+    stations[3] = Station.create(code: 'SGO', name: 'Segou Station', city: 'Segou', latitude: '13.4317', longitude: '-6.2157')
+    stations[4] = Station.create(code: 'MPI', name: 'Mopti Station', city: 'Mopti', latitude: '14.4843', longitude: '-4.18296')
+    stations[5] = Station.create(code: 'TBT', name: 'Tombouctou Station', city: 'Tombouctou', latitude: '16.77348', longitude: '-3.00742')
+    stations[6] = Station.create(code: 'GAO', name: 'Gao Station', city: 'Gao', latitude: '16.2667', longitude: '-0.05')
+    stations[7] = Station.create(code: 'KDL', name: 'Kidal Station', city: 'Kidal', latitude: '18.44111', longitude: '1.40778')
+    stations[8] = Station.create(code: 'MNK', name: 'Menaka Station', city: 'Menaka', latitude: '15.9182', longitude: '2.4022')
+    stations[9] = Station.create(code: 'BKO', name: 'Bamako Station', city: 'Bamako', latitude: '12.65', longitude: '-8')
 
     Date.new(2023, 7, 1).upto(Date.new(2023, 7, 15)).each do |date|
         stations.each do |starting_station|

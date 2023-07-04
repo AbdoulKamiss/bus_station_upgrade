@@ -1,8 +1,7 @@
-<br>
-<br>
-
-<table>
-  <thead>
+<div class="container-sm"
+<div class="d-flex justify-content-center" style="padding-top: 40px;">
+<table class="table">
+  <thead class="table-primary">
     <tr>
       <th>Starting</th>
       <th>Destination</th>
@@ -22,19 +21,20 @@
     </tr>
   </tbody>
 </table>
-<h3 id='confirmation-display'>Confirmation Number: <%= @booking.confirmation %></h3>
+</div>
+<h3 id='confirmation-display' class="d-flex justify-content-center">Confirmation Number: <%= @booking.confirmation %></h3>
 
 <div class='ticket-container'>
   <% @booking.users.each do |user| %>
     <div class='ticket'>
       <div class='logo-main logo ticket-item'>
         <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
-        <span>Odin Air</span>
+        <span>BusLink</span>
       </div>
       <div class='boarding-pass-main ticket-item'>Boarding Pass</div>
       <div class='logo-stub logo ticket-item'>
         <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
-        <span>Odin Air</span>
+        <span>BusLink</span>
       </div>
       <div class='itinerary-main ticket-item'>
         <span><%= @booking.travel.starting_station.code %></span>
@@ -67,4 +67,16 @@
       </div>
     </div>
   <% end %>
+</div>
+<div class="container d-flex justify-content-center ">
+<div class="card">
+    <div class="card-body">
+      <h2 class="card-title">BusLink</h2>
+      <h3>Boarding Pass</h3>
+      <div>
+        <p>Name: <%= current_user.name %></p>
+      </div>
+    </div>
+</div>
+</div>
 </div>
