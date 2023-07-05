@@ -1,3 +1,8 @@
+<input type="hidden" id="latitude" value="<%= @booking.travel.starting_station.latitude %>">
+<input type="hidden" id="longitude" value="<%= @booking.travel.starting_station.longitude %>">
+<input type="hidden" id="latitude2" value="<%= @booking.travel.destination_station.latitude %>">
+<input type="hidden" id="longitude2" value="<%= @booking.travel.destination_station.longitude %>">
+
 <div class="container-sm"
 <div class="d-flex justify-content-center" style="padding-top: 40px;">
 <table class="table">
@@ -78,5 +83,6 @@
       </div>
     </div>
 </div>
+<div id="map" class="border border-primary"></div>
 </div>
 </div>

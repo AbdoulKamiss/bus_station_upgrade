@@ -1,3 +1,8 @@
+<input type="hidden" id="latitude" value="<%= @travel.starting_station.latitude %>">
+<input type="hidden" id="longitude" value="<%= @travel.starting_station.longitude %>">
+<input type="hidden" id="latitude2" value="<%= @travel.destination_station.latitude %>">
+<input type="hidden" id="longitude2" value="<%= @travel.destination_station.longitude %>">
+
 <div class="container-sm">
 <div style="text-align: center; padding-top: 40px"><h3>Complete Booking</h3></div>
 <div class="d-flex justify-content-center">
@@ -24,8 +29,8 @@
 </table>
 </div>
 <div class="d-flex align-items-center flex-column">
-<h4>Users Details...</h4>
 
+<div id="map" class="border border-primary"></div>
   <%= form_with(model: @booking, local: true) do |form| %>
     <%= form.hidden_field :travel_id, value: @travel.id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
