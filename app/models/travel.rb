@@ -23,6 +23,10 @@ class Travel < ApplicationRecord
         "%dh %02dm" % duration.divmod(60)
     end
 
+    def boarding_time
+        (time - 1800).strftime('%H:%M')
+    end
+
     private
 
     def validate_booking_limit

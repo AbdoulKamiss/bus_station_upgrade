@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       UserBooking.create(user_id: current_user.id, booking_id: @booking.id)
-      flash.notice = "Travel successfully booked! A confirmation email has been sent to each passenger."
+      flash[:notice] = "Travel successfully booked!"
       redirect_to booking_path(@booking.confirmation)
     else
       @travel = Travel.find(params[:booking][:travel_id])
@@ -33,36 +33,12 @@ class BookingsController < ApplicationController
     end
   end
 
-#  def search
-#  if params.has_key?(:button)
-#      if !params.has_key?(:search_field)
-#        flash.alert = 'You must select to search by Confirmation Number or Email Address.'
-#        redirect_to search_bookings_url
-#      elsif params[:search_field] == 'confirmation'
-#        @booking = Booking.find_by(confirmation: params[:search_param].upcase)
-#        if @booking
-#          redirect_to booking_url(@booking.confirmation)
-#        else
-#          flash.alert = 'No booking could be found with the given parameters.'
-#          redirect_to search_bookings_url
-#        end
-#      else
-#        @bookings = Booking.includes(:passengers, flight: [:origin, :destination])
-#                           .where('passengers.email ILIKE ?', params[:search_param])
-#                           .references(:passengers)
-#                           .order(:date, :time)
-#        @email = params[:search_param]
-#        flash.alert = 'No booking could be found with the given parameters.' if @bookings.empty?
-#        render :search
-#      end
-#    else
-#      render :search
-#    end
-#  end
-
-#  def index
-#    redirect_to search_bookings_url
-#  end
+  def destroy
+    @booking = Booking.find_by(confirmation: params[:id])
+    @booking.destroy
+    flash[:notice] = 'Booking was successfully canceled.'
+    redirect_to bookings_url
+  end
 
   private
 

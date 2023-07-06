@@ -1,0 +1,40 @@
+<div class="container">
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+<h1>Edit Travel</h1>
+
+<%= form_with(model: @travel, url: travel_path(@travel), local: true, method: :patch) do |form| %>
+  <form>
+  <div class="form-group">
+    <%= form.label :date %></br>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :time %></br>
+    <%= form.time_field :time %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :duration %></br>
+    <%= form.number_field :duration %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :starting_station_id %></br>
+    <%= form.collection_select :starting_station_id, Station.all, :id, :name %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :destination_station_id %></br>
+    <%= form.collection_select :destination_station_id, Station.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update", class:"btn btn-primary" %>
+  </div>
+  </form>
+<% end %>
+<%= link_to t("common.back"), travels_path, id: "back", class:"btn btn-secondary" %>
+</div>

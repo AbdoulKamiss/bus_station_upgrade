@@ -4,6 +4,9 @@
 <input type="hidden" id="longitude2" value="<%= @booking.travel.destination_station.longitude %>">
 
 <div class="container-sm"
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
 <div class="d-flex justify-content-center" style="padding-top: 40px;">
 <table class="table">
   <thead class="table-primary">
@@ -30,28 +33,27 @@
 <h3 id='confirmation-display' class="d-flex justify-content-center">Confirmation Number: <%= @booking.confirmation %></h3>
 
 <div class='ticket-container'>
-  <% @booking.users.each do |user| %>
     <div class='ticket'>
       <div class='logo-main logo ticket-item'>
-        <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
+      <i class="bi bi-bus-front"></i>
         <span>BusLink</span>
       </div>
       <div class='boarding-pass-main ticket-item'>Boarding Pass</div>
       <div class='logo-stub logo ticket-item'>
-        <ion-icon name="airplane-sharp", id='airplane-ticket-logo'></ion-icon>
+      <i class="bi bi-bus-front"></i>
         <span>BusLink</span>
       </div>
       <div class='itinerary-main ticket-item'>
         <span><%= @booking.travel.starting_station.code %></span>
-        <ion-icon name="airplane-sharp", id='airplane-direction'></ion-icon>
+        <i class="bi bi-bus-front"></i>
         <span><%= @booking.travel.destination_station.code %></span>
       </div>
       <div class='passenger-stub ticket-item'>
         <div class='ticket-header'>Passenger</div>
-        <div><%= @booking.users.name %></div>
+        <div><%= current_user.name %></div>
       </div>
       <div class='origin-stub ticket-item'>
-        <div class='ticket-header'>Origin</div>
+        <div class='ticket-header'>Starting</div>
         <div><%= @booking.travel.starting_station.code %></div>
       </div>
       <div class='destination-stub ticket-item stub-right'>
@@ -60,29 +62,28 @@
       </div>
       <div class='passenger-main ticket-item'>
         <div class='ticket-header'>Passenger</div>
-        <div><%= current_user.name %></div>
+        <div><%=current_user.name %></div>
+      </div>
+      <div class='boarding-main ticket-item'>
+        <div class='ticket-header'>Boarding</div>
+        <div><%= @booking.travel.boarding_time %></div>
       </div>
       <div class='departure-main ticket-item'>
         <div class='ticket-header'>Departure</div>
         <div><%= @booking.travel.formatted_time %></div>
+      </div>
+      <div class='boarding-stub ticket-item'>
+        <div class='ticket-header'>Boarding</div>
+        <div><%= @booking.travel.boarding_time %></div>
       </div>
       <div class='departure-stub ticket-item stub-right'>
         <div class='ticket-header'>Departure</div>
         <div><%= @booking.travel.formatted_time %></div>
       </div>
     </div>
-  <% end %>
 </div>
-<div class="container d-flex justify-content-center ">
-<div class="card">
-    <div class="card-body">
-      <h2 class="card-title">BusLink</h2>
-      <h3>Boarding Pass</h3>
-      <div>
-        <p>Name: <%= current_user.name %></p>
-      </div>
-    </div>
-</div>
-<div id="map" class="border border-primary"></div>
+<div class="d-flex justify-content-center" style="padding-top:20px">
+<p style="padding-right:20px"> Would you like to cancel your travel ?</p>
+<%= link_to 'Cancel', booking_path(@booking.confirmation), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure?" },id: 'cancel-booking' %>
 </div>
 </div>

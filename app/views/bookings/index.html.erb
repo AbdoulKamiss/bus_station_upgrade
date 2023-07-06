@@ -1,5 +1,8 @@
 <div class="container">
-<div style="text-align: center;"><h1>Mes réservations</h1>
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+<div style="text-align: center;"><h1>Current Bookings</h1></div>
 <div class="d-flex justify-content-center">
   <table class="table">
   <thead class="table-primary">
@@ -13,7 +16,9 @@
   </thead>
   
   <tbody>
+
   <% @bookings.each do |booking| %>
+    <% if booking.travel.date <= Date.today or booking.travel.time < Time.now %>
     <tr>
       <td><%= booking.travel.starting_station.city %></td>
       <td><%= booking.travel.destination_station.city %></td>
@@ -22,6 +27,37 @@
       <td><%= booking.travel.formatted_duration %></td>
       <td><%= link_to "Show", booking_path(booking.confirmation), class:"btn btn-primary"%></td>
     </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+  <div style="text-align: center;"><h1>Previous Bookings</h1></div>
+  <div class="d-flex justify-content-center">
+  <table class="table">
+  <thead class="table-primary">
+    <tr>
+      <th>Starting</th>
+      <th>Destination</th>
+      <th>Date</th>
+      <th>Departure</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+
+  <% @bookings.each do |booking| %>
+    <% if booking.travel.date >= Date.today && booking.travel.time > Time.now %>
+    <tr>
+      <td><%= booking.travel.starting_station.city %></td>
+      <td><%= booking.travel.destination_station.city %></td>
+      <td><%= booking.travel.formatted_date %></td>
+      <td><%= booking.travel.formatted_time %></td>
+      <td><%= booking.travel.formatted_duration %></td>
+      <td><%= link_to "Show", booking_path(booking.confirmation), class:"btn btn-primary"%></td>
+    </tr>
+    <% end %>
   <% end %>
   </tbody>
   </table>
