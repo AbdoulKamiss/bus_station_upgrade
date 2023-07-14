@@ -5,6 +5,8 @@ class Booking < ApplicationRecord
 
   
 
+  
+
   before_save :ensure_confirmation
 
   def to_param

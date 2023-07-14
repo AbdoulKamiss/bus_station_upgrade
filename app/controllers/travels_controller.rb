@@ -1,6 +1,6 @@
 class TravelsController < ApplicationController
     before_action :authenticate_user!
-    before_action :authorize_admin, only: %i[ create update destroy]
+    before_action :authorize_admin, except: %i[ index]
     before_action :set_travel, only: %i[ show edit update destroy ]
 
     def new
@@ -40,7 +40,7 @@ class TravelsController < ApplicationController
         @travel = Travel.find(params[:id])
         @travel.destroy
         flash[:notice] = 'Travel was successfully destroyed.'
-        redirect_to travels_url
+        redirect_to root_path
     end
       
 

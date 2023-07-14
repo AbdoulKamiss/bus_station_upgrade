@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :travels
   resources :bookings
+  resources :users, only: [:show]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

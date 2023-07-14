@@ -33,14 +33,13 @@
 </div>
 <div class="d-flex align-items-center flex-column">
 
-<div id="map" class="border border-primary"></div>
+<div id="map"></div>
   <%= form_with(model: @booking, local: true) do |form| %>
     <%= form.hidden_field :travel_id, value: @travel.id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <div id='confirmation-buttons'>
-      <%= link_to 'Cancel', root_path, class:"btn btn-secondary",id: 'cancel-booking' %>
-      <ion-icon name="airplane-sharp", id='booking-airplane'></ion-icon>
-      <%= form.submit 'Book Travel', class:"btn btn-primary", id: 'book-travel' %>
+      <%= link_to 'Cancel', travels_path, class:"btn btn-secondary",id: 'cancel-booking' %>
+      <%= form.submit 'Confirm', class:"btn btn-primary", id: 'book-travel' %>
     </div>
   <% end %>
   </div>

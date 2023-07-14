@@ -27,11 +27,11 @@
           <% if user_signed_in? %>
           <% if current_user.admin? %>
               <%= content_tag :a, "Admin Dashboard", href: rails_admin_path, class: "nav-item nav-link" %>
+              <%= content_tag :a, "Add-Travels", href: new_travel_path, class: "nav-item nav-link" %>
           <% end %>
             <%= content_tag :a, "Travels", href: travels_path, class: "nav-item nav-link" %>
-            <%= content_tag :a, "Add-Travels", href: new_travel_path, class: "nav-item nav-link" %>
             <%= content_tag :a, "Bookings", href: bookings_path, class: "nav-item nav-link" %>
-            <%= content_tag :a, "Edit User", href: edit_user_registration_path, class: "nav-item nav-link" %>
+            <%= link_to "My Profil", user_path(current_user), class: "nav-item nav-link" %>
             <%= link_to "Logout", destroy_user_session_path, class: "nav-item nav-link", method: :delete %>
           <% else %>
             <%= content_tag :a, "Login", href: new_user_session_path , class: "nav-item nav-link" %>

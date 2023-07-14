@@ -7,4 +7,6 @@ class User < ApplicationRecord
          has_many :user_bookings, dependent: :destroy
          has_many :bookings, through: :user_bookings, inverse_of: :users
          has_many :travels, through: :bookings
+
+         validates :name, presence: true 
 end
