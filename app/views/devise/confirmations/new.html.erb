@@ -1,20 +1,41 @@
-<div class="container">
-<h2>Resend confirmation instructions</h2>
+<div class="container" style="padding-top: 100px">
+<div class="d-flex justify-content-center">
+<div style="width: 50%">
+<h2 style="text-align: center; padding: 20px">Resend confirmation instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <form>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"input", placeholder:"Email" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions", class:"btn btn-primary" %>
+    <%= f.submit "Resend confirmation instructions", class:"btn btn-outline-dark" %>
   </div>
   </form>
 <% end %>
 
 <%= render "devise/shared/links" %>
 </div>
+</div>
+</div>
+<div class="copyright text_align_left" style="position: absolute; bottom: 0; width: 100%">
+               <div class="container">
+                  <div class="row d_flex">
+                     <div class="col-md-6">
+                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
+                     </div>
+                     <div class="col-md-6">
+                        <ul class="social_icon text_align_center">
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
