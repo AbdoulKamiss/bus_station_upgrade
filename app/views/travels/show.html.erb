@@ -1,17 +1,47 @@
-<div class="container">
+<div class="container" style="padding-top: 100px">
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
+<div class="d-flex justify-content-center">
+<div style="width: 50%">
+<h2 style="text-align: center; padding: 20px">Show Travel Page</h2>
 
-<h1>Show Travel Page</h1>
-
-<p><%= @travel.starting_station.city %></p>
-<p><%= @travel.destination_station.city %></p>
-<p><%= @travel.formatted_date %></p>
-<p><%= @travel.formatted_time %></p>
-<p><%= @travel.formatted_duration %></p>
-
-<%= button_to 'Edit', edit_travel_path(@travel), method: :get, class:"btn btn-primary" %></br>
-<%= button_to 'Delete', travel_path(@travel), method: :delete, data: {confirm: "Are you sure?" }, class:"btn btn-danger" %>
-<%= link_to 'Back', travels_path, id: "back" %>
+<div class='d-flex justify-content-around' style="font-size: 50px">
+   <span><%= @travel.starting_station.city %></span>
+   <i class="bi bi-bus-front"></i>
+   <span><%= @travel.destination_station.city %></span>
 </div>
+<span class="d-flex justify-content-center"><p style="font-size:20px">Scheduled departure on <%= @travel.formatted_date %></p></span>
+<span class="d-flex justify-content-center"><p style="font-size:20px">At <%= @travel.formatted_time %></p></span>
+<span class="d-flex justify-content-center"><p style="font-size:20px">For a duration of <%= @travel.formatted_duration %></p></span>
+
+<div class="d-flex justify-content-center">
+<% if current_user.admin? %> 
+   <%= button_to 'Edit', edit_travel_path(@travel), method: :get, class:"btn btn-outline-dark", style:"margin-right:20px" %>
+   <%= button_to 'Delete', travel_path(@travel), method: :delete, data: {confirm: "Are you sure?" }, class:"btn btn-dark" %>
+<% else %>
+   <%= button_to 'Book Travel', new_booking_path, method: :get, params: { travel_id: @travel.id }, class:"btn btn-outline-dark" %>
+<% end %>
+</div>
+<%= link_to 'Back', travels_path, id: "back", class:"btn btn-dark" %>
+</div>
+</div>
+</div>
+<div class="copyright text_align_left" style="position: absolute; bottom: 0; width: 100%">
+               <div class="container">
+                  <div class="row d_flex">
+                     <div class="col-md-6">
+                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
+                     </div>
+                     <div class="col-md-6">
+                        <ul class="social_icon text_align_center">
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>

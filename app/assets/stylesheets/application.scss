@@ -13,4 +13,122 @@
  *= require_tree .
  *= require_self
  */
- 
+ /*--------------------------------------------------------------------- 
+header 
+---------------------------------------------------------------------*/
+
+.header {
+   width: 100%;
+   background: rgba(39, 43, 44, 0.95);
+   height: 85px;
+   padding: 37px 30px;
+   position: fixed;
+   z-index: 999;
+   box-shadow: 3px 0 13px rgba(30, 30, 30, 0.90);
+}
+
+
+/*--------------------------------------------------------------------- 
+menu section
+---------------------------------------------------------------------*/
+
+.navigation.navbar {
+   float: right;
+   padding: 0;
+}
+
+.navigation.navbar-dark .navbar-nav .nav-link {
+   padding: 0px 30px;
+   color: #fff;
+   font-size: 17px;
+   line-height: 20px;
+   font-weight: 400;
+}
+
+.navigation.navbar-dark .navbar-nav .nav-link:focus,
+.navigation.navbar-dark .navbar-nav .nav-link:hover {
+   color: #fff;
+}
+
+.navigation.navbar-dark .navbar-nav .active>.nav-link,
+.navigation.navbar-dark .navbar-nav .nav-link.active,
+.navigation.navbar-dark .navbar-nav .nav-link.show,
+.navigation.navbar-dark .navbar-nav .show>.nav-link {
+   color: #fff;
+}
+
+.di_no {
+   display: none;
+}
+
+ul.email {
+   padding-top: 1px;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   flex-wrap: wrap;
+}
+
+ul.email li {
+   padding: 0px 35px;
+}
+
+ul.email li:nth-child(2) {
+   padding-right: 0;
+}
+
+ul.email li a {
+   font-size: 17px;
+   color: #fff;
+}
+
+ul.email li i {
+   color: #fff;
+   font-size: 19px;
+}
+
+ul.social_icon {
+   float: right;
+}
+
+ul.social_icon li {
+   display: inline-block;
+   padding-right: 15px;
+}
+
+ul.social_icon li:last-child {
+   padding-right: 0;
+}
+
+ul.social_icon li a {
+   color: #fff;
+   display: inline-block;
+   text-align: center;
+   line-height: 33px;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+ul.social_icon li a:hover {
+   color: #bdbdbe;
+   transform: rotate(360deg);
+   transition: ease-in all 0.7s;
+}
+.copyright {
+   background: #151515;
+   margin-top: 80px;
+   padding: 20px 0px;
+}
+
+.copyright p {
+   color: #bdbdbe;
+   font-weight: 400;
+}
+
+.copyright a {
+   color: #bdbdbe;
+}
+
+.copyright a:hover {
+   color: #fff;
+}

@@ -8,3 +8,24 @@
 .container{
     padding-top: 30px;
 }
+
+.page-link {
+    background-color: white;
+    color: #343a40; 
+}
+.page-link:hover{
+    background-color: #343a40;
+    color: white;
+}
+select#travel_starting_station_id{
+    height: 60px;
+    width: 100%;
+    border: #d2d2d3 solid 1px;
+    background: #fff;
+}
+select#travel_destination_station_id{
+    height: 60px;
+    width: 100%;
+    border: #d2d2d3 solid 1px;
+    background: #fff;
+}

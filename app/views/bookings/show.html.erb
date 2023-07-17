@@ -3,13 +3,13 @@
 <input type="hidden" id="latitude2" value="<%= @booking.travel.destination_station.latitude %>">
 <input type="hidden" id="longitude2" value="<%= @booking.travel.destination_station.longitude %>">
 
-<div class="container-sm"
+<div class="container-sm" style="padding-top: 85px">
 <% if flash[:notice] %>
   <div class="alert alert-success"><%= flash[:notice] %></div>
 <% end %>
 <div class="d-flex justify-content-center" style="padding-top: 40px;">
 <table class="table">
-  <thead class="table-primary">
+  <thead class="table-dark">
     <tr>
       <th>Starting</th>
       <th>Destination</th>
@@ -29,6 +29,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <h3 id='confirmation-display' class="d-flex justify-content-center">Confirmation Number: <%= @booking.confirmation %></h3>
 
@@ -83,7 +84,25 @@
     </div>
 </div>
 <div class="d-flex justify-content-center" style="padding-top:20px">
-<p style="padding-right:20px"> Would you like to cancel your travel ?</p>
-<%= link_to 'Cancel', booking_path(@booking.confirmation), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure?" },id: 'cancel-booking' %>
+<p style="padding-right:20px;"> Would you like to cancel your travel ?</p>
+<%= link_to 'Cancel', booking_path(@booking.confirmation), method: :delete, class:"btn btn-dark", data: {confirm: "Are you sure?" },id: 'cancel-booking' %>
 </div>
 </div>
+<div class="copyright text_align_left">
+               <div class="container">
+                  <div class="row d_flex">
+                     <div class="col-md-6">
+                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
+                     </div>
+                     <div class="col-md-6">
+                        <ul class="social_icon text_align_center">
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>

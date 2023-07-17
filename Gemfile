@@ -49,6 +49,7 @@ group :development do
   gem 'cancancan'
   gem 'faker'
   gem 'kaminari'
+  gem 'bootstrap-kaminari-views'
   gem 'ransack'
   gem 'geocoder'
   gem 'gmaps4rails'

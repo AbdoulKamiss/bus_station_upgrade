@@ -1,24 +1,26 @@
-<div class="container">
+<div class="container", style="padding-top: 100px" >
 <% if flash[:notice] %>
   <div class="alert alert-success"><%= flash[:notice] %></div>
 <% end %>
-<h1>Add Travel</h1>
+<div class="d-flex justify-content-center">
+<div style="width: 50%">
+<h2 style="text-align: center; padding: 20px">Add Travel</h2>
 
 <%= form_with(model: @travel, url: travels_path, local: true) do |form| %>
   <form>  
   <div class="form-group">
     <%= form.label :date %><br />
-    <%= form.date_field :date %>
+    <%= form.date_field :date, class:"input" %>
   </div>
 
   <div class="form-group">
     <%= form.label :time %><br />
-    <%= form.time_field :time %>
+    <%= form.time_field :time, class:"input" %>
   </div>
 
   <div class="form-group">
     <%= form.label :duration %><br />
-    <%= form.number_field :duration %>
+    <%= form.number_field :duration, class:"input" %>
   </div>
 
   <div class="form-group">
@@ -32,10 +34,30 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Create Travel", class:"btn btn-primary" %>
+    <%= form.submit "Create Travel", class:"btn btn-outline-dark" %>
   </div>
   </form>
 <% end %>
-
-<%= link_to "Back", travels_path, id: "back", class:"btn btn-secondary" %>
+</br>
+<span><%= link_to "Back", travels_path, id: "back", class:"btn btn-dark" %></span>
 </div>
+</div>
+</div>
+<div class="copyright text_align_left">
+               <div class="container">
+                  <div class="row d_flex">
+                     <div class="col-md-6">
+                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
+                     </div>
+                     <div class="col-md-6">
+                        <ul class="social_icon text_align_center">
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>

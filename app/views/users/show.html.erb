@@ -1,6 +1,31 @@
-<h1>User page of <%= @user.name %></h1>
-
-<p><strong>Email:</strong> <%= @user.email %></p>
-<p><strong>Name:</strong> <%= @user.name %></p>
-
-<%= link_to 'Edit my profil', edit_user_registration_path %>
+<div class="container" style="padding-top: 100px">
+<div class="d-flex justify-content-center">
+<div style="width: 40%">
+<div style="margin-bottom: 20px; box-shadow: 2px 2px 2px 2px grey">
+<h2 style="text-align: center; padding: 20px">Profile of <%= @user.name %></h2>
+    <p style="text-align: center; padding: 10px; font-size: 20px"><strong>Email:</strong> <%= @user.email %></p>
+    <p style="text-align: center; padding: 10px; font-size: 20px"><strong>Name:</strong> <%= @user.name %></p>
+    <p style="text-align: center; padding: 10px; font-size: 20px"><strong>Registration date:</strong> <%= @user.created_at.strftime('%Y-%m-%d') %></p>
+</div>
+<span class="d-flex justify-content-center"><%= link_to 'Edit my profil', edit_user_registration_path, class:"btn btn-outline-dark" %></span>
+</div>
+</div>
+</div>
+<div class="copyright text_align_left" style="position: absolute; bottom: 0; width: 100%">
+               <div class="container">
+                  <div class="row d_flex">
+                     <div class="col-md-6">
+                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
+                     </div>
+                     <div class="col-md-6">
+                        <ul class="social_icon text_align_center">
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>

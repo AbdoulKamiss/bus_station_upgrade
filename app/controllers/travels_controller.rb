@@ -1,6 +1,6 @@
 class TravelsController < ApplicationController
     before_action :authenticate_user!
-    before_action :authorize_admin, except: %i[ index]
+    before_action :authorize_admin, except: %i[ index show ]
     before_action :set_travel, only: %i[ show edit update destroy ]
 
     def new
