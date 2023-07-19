@@ -19,7 +19,8 @@ class TravelsController < ApplicationController
 
     def index
         @q = Travel.ransack(params[:q])
-        @travels = @q.result(distinct: true).page(params[:page])
+        @travels = @q.result(distinct: true).order(:date).page(params[:page])
+        #@travels = @q.result(distinct: true).where('date >= ?', Date.today).order(:date).page(params[:page])
     end
 
     def edit

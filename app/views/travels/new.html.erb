@@ -1,7 +1,9 @@
 <div class="container", style="padding-top: 100px" >
-<% if flash[:notice] %>
-  <div class="alert alert-success"><%= flash[:notice] %></div>
-<% end %>
+<div class="notice">
+      <% if flash[:notice] %>
+         <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+   </div>  
 <div class="d-flex justify-content-center">
 <div style="width: 50%">
 <h2 style="text-align: center; padding: 20px">Add Travel</h2>
@@ -25,12 +27,12 @@
 
   <div class="form-group">
     <%= form.label :starting_station_id %><br />
-    <%= form.collection_select :starting_station_id, Station.all, :id, :name %>
+    <%= form.collection_select :starting_station_id, Station.all, :id, :name, { prompt: "Starting" } %>
   </div>
 
   <div class="form-group">
     <%= form.label :destination_station_id %><br />
-    <%= form.collection_select :destination_station_id, Station.all, :id, :name %>
+    <%= form.collection_select :destination_station_id, Station.all, :id, :name, { prompt: "Destination" } %>
   </div>
 
   <div class="actions">

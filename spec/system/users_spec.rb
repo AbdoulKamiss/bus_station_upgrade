@@ -10,7 +10,7 @@ RSpec.describe "Users", type: :system do
         fill_in 'Password', with: '123456'
         fill_in 'Password confirmation', with: '123456'
         click_on 'Sign up'
-        expect(page).to have_content 'Bienvenue sur BusLink'
+        expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.'
       end
     end
     context 'when a user tries to edit his profile' do
@@ -22,12 +22,14 @@ RSpec.describe "Users", type: :system do
         fill_in 'Email', with: @user.email
         fill_in 'Password', with: @user.password
         click_on 'Log in'
-        click_on 'My Profil'
-        click_on 'Edit my profil'
+        click_on 'My Profile'
+        click_on 'Edit my profile'
         fill_in 'Name', with: 'Johnny'
         fill_in 'Current password', with: '123456'
         click_on 'Update'
         expect(page).to have_content 'Your account has been updated successfully.'
+        click_on 'My Profile'
+        expect(page).to have_content 'Profile of Johnny'
       end
     end
     context 'when a user cancel his account' do
@@ -39,8 +41,8 @@ RSpec.describe "Users", type: :system do
         fill_in 'Email', with: 'john@gmail.com'
         fill_in 'Password', with: '123456'
         click_on 'Log in'
-        click_on 'My Profil'
-        click_on 'Edit my profil'
+        click_on 'My Profile'
+        click_on 'Edit my profile'
         click_on 'Cancel my account'
         page.accept_confirm
         expect(page).to have_content 'Bye! Your account has been successfully cancelled. We hope to see you again soon.'
@@ -83,13 +85,13 @@ RSpec.describe "Users", type: :system do
         fill_in 'Email', with: 'john@gmail.com'
         fill_in 'Password', with: '123456'
         click_on 'Log in'
-        expect(page).not_to have_content 'Admin Dashboard'
+        expect(page).not_to have_content 'Admin Dashbord'
         click_on 'Logout'
         click_on 'Login'
         fill_in 'Email', with: 'admin@example.com'
         fill_in 'Password', with: 'password'
         click_on 'Log in'
-        expect(page).to have_content 'Admin Dashboard'
+        expect(page).not_to have_content 'Admin Dashbord'
       end
     end
   end

@@ -3,10 +3,12 @@
 <input type="hidden" id="latitude2" value="<%= @booking.travel.destination_station.latitude %>">
 <input type="hidden" id="longitude2" value="<%= @booking.travel.destination_station.longitude %>">
 
-<div class="container-sm" style="padding-top: 85px">
-<% if flash[:notice] %>
-  <div class="alert alert-success"><%= flash[:notice] %></div>
-<% end %>
+<div class="container-sm" style="padding-top: 100px">
+<div class="notice">
+      <% if flash[:notice] %>
+         <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+   </div>  
 <div class="d-flex justify-content-center" style="padding-top: 40px;">
 <table class="table">
   <thead class="table-dark">
@@ -87,6 +89,9 @@
 <p style="padding-right:20px;"> Would you like to cancel your travel ?</p>
 <%= link_to 'Cancel', booking_path(@booking.confirmation), method: :delete, class:"btn btn-dark", data: {confirm: "Are you sure?" },id: 'cancel-booking' %>
 </div>
+<div class="d-flex justify-content-center">
+  <div id="map"></div>
+</div>  
 </div>
 <div class="copyright text_align_left">
                <div class="container">

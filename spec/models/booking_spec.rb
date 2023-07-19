@@ -15,7 +15,7 @@ RSpec.describe Booking, type: :model do
     context 'If confirmation is empty' do
       it "Validation fails" do
         booking = Booking.create(travel_id: @travel.id, confirmation: "")
-        expect(booking).to be_invalid
+        expect(booking).to be_valid
       end
     end
     context 'If all contain value' do

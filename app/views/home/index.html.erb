@@ -1,12 +1,18 @@
 <div class="container-fluid" id="top_section">
-  <% if flash[:notice] %>
-    <div class="alert alert-success"><%= flash[:notice] %></div>
-  <% end %>
+   <div class="notice">
+      <% if flash[:notice] %>
+         <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+   </div>   
 
   <div style="padding: 100px 0px 0px 250px;">
     <p style="font-weight: bold; color: #fff; font-size: 60px">Welcome<br> on BusLink</p>
     <p style="font-weight: bold; color: #fff; font-size: 20px">Your trusted trucking company!<br> Whether you want to travel to another city<br> on business or enjoy a relaxing getaway,<br> BusLink is there to accompany you.</p> 
-    <p style="font-weight: bold; color: #fff; font-size: 20px">Want to join us?  <span><%= content_tag :a, "Register", href: new_user_registration_path, class: "btn btn-light" %></span></p>
+    <% if user_signed_in? %>
+      <p style="font-weight: bold; color: #fff; font-size: 20px">Want to start using it?  <span><%= content_tag :a, "Travels list", href: travels_path, class: "btn btn-light" %></span></p>
+    <% else %>
+      <p style="font-weight: bold; color: #fff; font-size: 20px">Want to join us?  <span><%= content_tag :a, "Register", href: new_user_registration_path, class: "btn btn-light" %></span></p>
+    <% end %>
   </div>
 </div>
 <div class="container">

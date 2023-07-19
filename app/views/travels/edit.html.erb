@@ -1,7 +1,9 @@
 <div class="container", style="padding-top: 100px">
-<% if flash[:notice] %>
-  <div class="alert alert-success"><%= flash[:notice] %></div>
-<% end %>
+<div class="notice">
+      <% if flash[:notice] %>
+         <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+   </div>  
 <div class="d-flex justify-content-center">
 <div style="width: 50%">
 <h2 style="text-align: center; padding: 20px">Edit Travel</h2>

@@ -1,7 +1,9 @@
 <div class="container-sm justify-content-around" style="padding-top: 85px">
-<% if flash[:notice] %>
-  <div class="alert alert-success"><%= flash[:notice] %></div>
-<% end %>
+<div class="notice">
+      <% if flash[:notice] %>
+         <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+   </div>  
 <div style="text-align: center; padding-top: 20px;"><h1>Travels Index Page</h1></div>
 <div style="display: flex; justify-content: center;">
 <%= search_form_for @q, url: travels_path, class:"form-inline my-2 my-lg-0" do |f| %>
@@ -49,7 +51,7 @@
 </div>
 <div style="display: flex; justify-content: center;"><%= paginate @travels %></div>
 </div>
-<div class="copyright text_align_left">
+<div class="copyright text_align_left" style="position: relative; bottom: 0; width: 100%">
                <div class="container">
                   <div class="row d_flex">
                      <div class="col-md-6">

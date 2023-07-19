@@ -308,7 +308,7 @@ DEPENDENCIES
   bootstrap-kaminari-views
   byebug
   cancancan
-  capybara (>= 2.15)
+  capybara (~> 3.39, >= 3.39.2)
   devise
   dotenv-rails
   factory_bot_rails
