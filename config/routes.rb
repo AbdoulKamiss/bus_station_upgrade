@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :travels
   resources :bookings
-  resources :users, only: [:show]
+  resources :users, except: [ :new ]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

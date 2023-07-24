@@ -3,111 +3,101 @@
 <input type="hidden" id="latitude2" value="<%= @booking.travel.destination_station.latitude %>">
 <input type="hidden" id="longitude2" value="<%= @booking.travel.destination_station.longitude %>">
 
-<div class="container-sm" style="padding-top: 100px">
-<div class="notice">
+<div id="container_p">
+  <div class="container">
+    <div class="notice">
       <% if flash[:notice] %>
-         <div class="alert alert-success"><%= flash[:notice] %></div>
+        <div class="alert alert-success alert-dismissible show fade">
+          <%= flash[:notice] %>
+          <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+          </button>
+        </div>
       <% end %>
-   </div>  
-<div class="d-flex justify-content-center" style="padding-top: 40px;">
-<table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th>Starting</th>
-      <th>Destination</th>
-      <th>Date</th>
-      <th>Departure</th>
-      <th>Duration</th>
-    </tr>
-  </thead>
+    </div>  
+    <div class="d-flex justify-content-center" style="padding-top: 40px;">
+      <table class="table table-sm table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Départ</th>
+            <th>Arrivée</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Durée</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <tr>
-      <td><%= @booking.travel.starting_station.city %></td>
-      <td><%= @booking.travel.destination_station.city %></td>
-      <td><%= @booking.travel.formatted_date %></td>
-      <td><%= @booking.travel.formatted_time %></td>
-      <td><%= @booking.travel.formatted_duration %></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-<h3 id='confirmation-display' class="d-flex justify-content-center">Confirmation Number: <%= @booking.confirmation %></h3>
-
-<div class='ticket-container'>
-    <div class='ticket'>
-      <div class='logo-main logo ticket-item'>
-      <i class="bi bi-bus-front"></i>
-        <span>BusLink</span>
-      </div>
-      <div class='boarding-pass-main ticket-item'>Boarding Pass</div>
-      <div class='logo-stub logo ticket-item'>
-      <i class="bi bi-bus-front"></i>
-        <span>BusLink</span>
-      </div>
-      <div class='itinerary-main ticket-item'>
-        <span><%= @booking.travel.starting_station.code %></span>
-        <i class="bi bi-bus-front"></i>
-        <span><%= @booking.travel.destination_station.code %></span>
-      </div>
-      <div class='passenger-stub ticket-item'>
-        <div class='ticket-header'>Passenger</div>
-        <div><%= current_user.name %></div>
-      </div>
-      <div class='origin-stub ticket-item'>
-        <div class='ticket-header'>Starting</div>
-        <div><%= @booking.travel.starting_station.code %></div>
-      </div>
-      <div class='destination-stub ticket-item stub-right'>
-        <div class='ticket-header'>Destination</div>
-        <div><%= @booking.travel.destination_station.code %></div>
-      </div>
-      <div class='passenger-main ticket-item'>
-        <div class='ticket-header'>Passenger</div>
-        <div><%=current_user.name %></div>
-      </div>
-      <div class='boarding-main ticket-item'>
-        <div class='ticket-header'>Boarding</div>
-        <div><%= @booking.travel.boarding_time %></div>
-      </div>
-      <div class='departure-main ticket-item'>
-        <div class='ticket-header'>Departure</div>
-        <div><%= @booking.travel.formatted_time %></div>
-      </div>
-      <div class='boarding-stub ticket-item'>
-        <div class='ticket-header'>Boarding</div>
-        <div><%= @booking.travel.boarding_time %></div>
-      </div>
-      <div class='departure-stub ticket-item stub-right'>
-        <div class='ticket-header'>Departure</div>
-        <div><%= @booking.travel.formatted_time %></div>
-      </div>
+        <tbody>
+          <tr>
+            <td><%= @booking.travel.starting_station.city %></td>
+            <td><%= @booking.travel.destination_station.city %></td>
+            <td><%= @booking.travel.formatted_date %></td>
+            <td><%= @booking.travel.formatted_time %></td>
+            <td><%= @booking.travel.formatted_duration %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  
+    <h2 class="d-flex justify-content-center">Confirmation N°: <%= @booking.confirmation %></h2>
+
+    <div class='ticket-container'>
+        <div class='ticket'>
+          <div class='logo-main logo ticket-item'>
+          <i class="bi bi-bus-front"></i>
+            <span>BusLink</span>
+          </div>
+          <div class='boarding-pass-main ticket-item'>Ticket d'embarquement</div>
+          <div class='logo-stub logo ticket-item'>
+          <i class="bi bi-bus-front"></i>
+            <span>BusLink</span>
+          </div>
+          <div class='itinerary-main ticket-item'>
+            <span><%= @booking.travel.starting_station.code %></span>
+            <i class="bi bi-bus-front"></i>
+            <span><%= @booking.travel.destination_station.code %></span>
+          </div>
+          <div class='passenger-stub ticket-item'>
+            <div class='ticket-header'>Passager</div>
+            <div><%= current_user.name %></div>
+          </div>
+          <div class='origin-stub ticket-item'>
+            <div class='ticket-header'>Départ</div>
+            <div><%= @booking.travel.starting_station.code %></div>
+          </div>
+          <div class='destination-stub ticket-item stub-right'>
+            <div class='ticket-header'>Arrivée</div>
+            <div><%= @booking.travel.destination_station.code %></div>
+          </div>
+          <div class='passenger-main ticket-item'>
+            <div class='ticket-header'>Passager</div>
+            <div><%=current_user.name %></div>
+          </div>
+          <div class='boarding-main ticket-item'>
+            <div class='ticket-header'>Embarquement</div>
+            <div><%= @booking.travel.boarding_time %></div>
+          </div>
+          <div class='departure-main ticket-item'>
+            <div class='ticket-header'>Départ</div>
+            <div><%= @booking.travel.formatted_time %></div>
+          </div>
+          <div class='boarding-stub ticket-item'>
+            <div class='ticket-header'>Embarquement</div>
+            <div><%= @booking.travel.boarding_time %></div>
+          </div>
+          <div class='departure-stub ticket-item stub-right'>
+            <div class='ticket-header'>Départ</div>
+            <div><%= @booking.travel.formatted_time %></div>
+          </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center" style="padding-top:20px">
+      <p style="padding-right:20px;"> Voulez vous annuler votre voyage ?</p>
+      <%= link_to 'Annuler', booking_path(@booking.confirmation), method: :delete, class:"btn btn-dark", data: {confirm: "Êtes-vous sûr?" },id: 'cancel-booking' %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div id="map"></div>
+    </div>  
+  </div>
 </div>
-<div class="d-flex justify-content-center" style="padding-top:20px">
-<p style="padding-right:20px;"> Would you like to cancel your travel ?</p>
-<%= link_to 'Cancel', booking_path(@booking.confirmation), method: :delete, class:"btn btn-dark", data: {confirm: "Are you sure?" },id: 'cancel-booking' %>
-</div>
-<div class="d-flex justify-content-center">
-  <div id="map"></div>
-</div>  
-</div>
-<div class="copyright text_align_left">
-               <div class="container">
-                  <div class="row d_flex">
-                     <div class="col-md-6">
-                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
-                     </div>
-                     <div class="col-md-6">
-                        <ul class="social_icon text_align_center">
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>

@@ -249,6 +249,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    securerandom (0.2.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -327,6 +328,7 @@ DEPENDENCIES
   rexml
   rspec-rails (~> 4.0.0)
   sass-rails (>= 6)
+  securerandom
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)

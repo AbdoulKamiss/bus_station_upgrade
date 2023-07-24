@@ -1,71 +1,55 @@
-<div class="container-sm justify-content-around" style="padding-top: 85px">
-<div class="notice">
+<div id="container_p">
+   <div class="notice">
       <% if flash[:notice] %>
-         <div class="alert alert-success"><%= flash[:notice] %></div>
+         <div class="alert alert-success alert-dismissible show fade">
+            <%= flash[:notice] %>
+            <button type="button" class="close" data-dismiss="alert">
+               <span>&times;</span>
+            </button>
+         </div>
       <% end %>
    </div>  
-<div style="text-align: center; padding-top: 20px;"><h1>Travels Index Page</h1></div>
-<div style="display: flex; justify-content: center;">
-<%= search_form_for @q, url: travels_path, class:"form-inline my-2 my-lg-0" do |f| %>
-  <%= f.collection_select :starting_station_id_eq, Station.all, :id, :name, { prompt: "Starting" }, class: "form-control mr-sm-2" %>
-  <%= f.collection_select :destination_station_id_eq, Station.all, :id, :name, { prompt: "Destination" }, class: "form-control mr-sm-2" %>
-  <%= f.collection_select :date_eq, Travel.select(:date).distinct.order(:date), :date, :formatted_date, { prompt: "Date" }, class:"form-control mr-sm-2"%>
-  <%= f.submit "Search", class:"btn btn-outline-dark my-2 my-sm-0" %>
-<% end %>
-</div>
-<div class="container" >
-    <div class="row d-flex justify-content-around">
-      
-    <table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th>Starting</th>
-      <th>Destination</th>
-      <th><%= sort_link(@q, :date, "Date") %></th>
-      <th>Time</th>
-      <th>Duration</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @travels.each do |travel| %>
-      <tr>
-        <td><%= travel.starting_station.city %></td>
-        <td><%= travel.destination_station.city %></td>
-        <td><%= travel.formatted_date %></td>
-        <td><%= travel.formatted_time %></td>
-        <td><%= travel.formatted_duration %></td>
-        <% if current_user.admin? %>
-        <td><%= button_to 'Edit', edit_travel_path(travel), method: :get, class:"btn btn-outline-dark" %></td>
-        <td><%= button_to 'Show', travel_path(travel), method: :get, class:"btn btn-outline-dark" %></td>
-        <td><%= button_to 'Delete', travel_path(travel), method: :delete, data: {confirm: "Are you sure?" }, class:"btn btn-dark" %></td>
-        <% else %>
-        <td><%= button_to 'Show', travel_path(travel), method: :get, class:"btn btn-outline-dark" %></td>
-        <td><%= button_to 'Book Travel', new_booking_path, method: :get, params: { travel_id: travel.id }, class:"btn btn-outline-dark" %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-    
-    </div>
-</div>
-<div style="display: flex; justify-content: center;"><%= paginate @travels %></div>
-</div>
-<div class="copyright text_align_left" style="position: relative; bottom: 0; width: 100%">
-               <div class="container">
-                  <div class="row d_flex">
-                     <div class="col-md-6">
-                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
-                     </div>
-                     <div class="col-md-6">
-                        <ul class="social_icon text_align_center">
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
+   <div style="text-align: center; padding-top: 20px;"><h1>Liste des voyages</h1></div>
+   <div class="row d-flex justify-content-center mx-sm-2" >
+      <%= search_form_for @q, url: travels_path, class:"form-inline my-2 my-lg-0" do |f| %>
+         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <%= f.collection_select :starting_station_id_eq, Station.all, :id, :name, { prompt: "Départ" }, class: "form-control mr-5 my-1" %>
+         </div>
+         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <%= f.collection_select :destination_station_id_eq, Station.all, :id, :name, { prompt: "Arrivée" }, class: "form-control mr-5 my-1" %>
+         </div>
+         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <%= f.collection_select :date_eq, Travel.select(:date).distinct.order(:date), :date, :formatted_date, { prompt: "Date" }, class:"form-control mr-5 my-1"%>
+         </div>
+         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <%= f.submit "Rechercher", class:"btn btn-outline-dark my-1 my-sm-1 my-md-1" %>
+         </div>   
+      <% end %>
+   </div>
+   <div class="container" >
+      <div class="row">
+         <% @travels.each do |travel| %>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-3">
+               <section class="card bg-light text-dark">
+                  <div class="card-body">
+                     <p class="d-flex justify-content-around"><%= travel.starting_station.city %> <i class="bi bi-bus-front"></i> <%= travel.destination_station.city %></p>
+                     <p class="d-flex justify-content-around">Départ prévu le <%= travel.formatted_date %> à <%= travel.formatted_time %></p>
+                     <span class="d-flex justify-content-around"> 
+                        <% if current_user.admin? %>
+                           <%= button_to 'Modifier', edit_travel_path(travel), method: :get, class:"btn btn-outline-dark" %>
+                           <%= button_to 'Détails', travel_path(travel), method: :get, class:"btn btn-outline-dark" %>
+                           <%= button_to 'Supprimer', travel_path(travel), method: :delete, data: {confirm: "Are you sure?" }, class:"btn btn-dark" %>
+                        <% else %>   
+                           <%= button_to 'Détails', travel_path(travel), method: :get, class:"btn btn-outline-dark" %>
+                           <%= button_to 'Réserver', new_booking_path, method: :get, params: { travel_id: travel.id }, class:"btn btn-outline-dark" %>
+                        <% end %>   
+                     </span>
                   </div>
-               </div>
+               </section>
             </div>
+         <% end %>
+      </div>
+   </div>
+   <div class="d-flex justify-content-center"><%= paginate @travels %></div>
+</div>
+         

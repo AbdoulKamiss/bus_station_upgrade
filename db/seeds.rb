@@ -88,6 +88,7 @@ ActiveRecord::Base.transaction do
     Booking.destroy_all
     Station.destroy_all
     Travel.destroy_all
+    User.destroy_all
 
     ActiveRecord::Base.connection.reset_pk_sequence!('bookings')
     ActiveRecord::Base.connection.reset_pk_sequence!('stations')
@@ -105,7 +106,7 @@ ActiveRecord::Base.transaction do
     stations[8] = Station.create(code: 'MNK', name: 'Menaka Station', city: 'Menaka', latitude: '15.9182', longitude: '2.4022')
     stations[9] = Station.create(code: 'BKO', name: 'Bamako Station', city: 'Bamako', latitude: '12.65', longitude: '-8')
 
-    Date.new(2023, 7, 1).upto(Date.new(2023, 7, 15)).each do |date|
+    Date.new(2023, 7, 16).upto(Date.new(2023, 7, 31)).each do |date|
         stations.each do |starting_station|
           stations.each do |destination_station|
             next if starting_station == destination_station
@@ -119,4 +120,88 @@ ActiveRecord::Base.transaction do
             end
         end
     end
+
+    5.times do |n|
+        User.create!(
+          name: "User#{n+1}",
+          email: "user#{n+1}@gmail.com",
+          password: "password",
+          confirmed_at: Time.now
+        )
+    end
+
+    User.create!(
+        [
+          {
+            name: "admin",
+            email: "admin@gmail.com",
+            password: "password",
+            admin: true,
+            confirmed_at: Time.now
+          },
+          {
+            name: "admin2",
+            email: "admin2@gmail.com",
+            password: "password",
+            admin: true,
+            confirmed_at: Time.now
+          },
+        ]
+      )
+
+    10.times do
+        travel = Travel.all.sample
+        confirmation_code = SecureRandom.hex(3).upcase
+        Booking.create!(
+          travel: travel,
+          confirmation: confirmation_code
+        )
+    end
+
+    User.find_by(name: "User1").user_bookings.create!(
+        [
+            {booking_id: 1},
+            {booking_id: 3},
+            {booking_id: 5},
+            {booking_id: 7},
+            {booking_id: 9}
+        ]
+    )
+    User.find_by(name: "User2").user_bookings.create!(
+        [
+            {booking_id: 3},
+            {booking_id: 5},
+            {booking_id: 6},
+            {booking_id: 2},
+            {booking_id: 10}
+        ]
+    )
+    User.find_by(name: "User3").user_bookings.create!(
+        [
+            {booking_id: 4},
+            {booking_id: 8},
+            {booking_id: 1},
+            {booking_id: 6},
+            {booking_id: 3}
+        ]
+    )
+    User.find_by(name: "User4").user_bookings.create!(
+        [
+            {booking_id: 1},
+            {booking_id: 2},
+            {booking_id: 3},
+            {booking_id: 4},
+            {booking_id: 5}
+        ]
+    )
+    User.find_by(name: "User5").user_bookings.create!(
+        [
+            {booking_id: 10},
+            {booking_id: 9},
+            {booking_id: 8},
+            {booking_id: 7},
+            {booking_id: 6}
+        ]
+    )
+
 end

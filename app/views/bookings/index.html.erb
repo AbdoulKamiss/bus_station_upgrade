@@ -1,86 +1,50 @@
-<div class="container" style="padding-top: 100px">
-<div class="notice">
-      <% if flash[:notice] %>
-         <div class="alert alert-success"><%= flash[:notice] %></div>
-      <% end %>
-   </div>  
-<div style="text-align: center;"><h1>Current Bookings</h1></div>
-<div class="d-flex justify-content-center">
-  <table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th>Starting</th>
-      <th>Destination</th>
-      <th>Date</th>
-      <th>Departure</th>
-      <th>Duration</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-
-  <% @bookings.each do |booking| %>
-    <% if booking.travel.date > Date.today %>
-    <tr>
-      <td><%= booking.travel.starting_station.city %></td>
-      <td><%= booking.travel.destination_station.city %></td>
-      <td><%= booking.travel.formatted_date %></td>
-      <td><%= booking.travel.formatted_time %></td>
-      <td><%= booking.travel.formatted_duration %></td>
-      <td><%= link_to "Show", booking_path(booking.confirmation), class:"btn btn-dark"%></td>
-    </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-  </table>
-  </div>
-  <div style="text-align: center;"><h1>Previous Bookings</h1></div>
-  <div class="d-flex justify-content-center">
-  <table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th>Starting</th>
-      <th>Destination</th>
-      <th>Date</th>
-      <th>Departure</th>
-      <th>Duration</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-
-  <% @bookings.each do |booking| %>
-    <% if booking.travel.date <= Date.today %>
-    <tr>
-      <td><%= booking.travel.starting_station.city %></td>
-      <td><%= booking.travel.destination_station.city %></td>
-      <td><%= booking.travel.formatted_date %></td>
-      <td><%= booking.travel.formatted_time %></td>
-      <td><%= booking.travel.formatted_duration %></td>
-      <td><%= link_to "Show", booking_path(booking.confirmation), class:"btn btn-outline-dark"%></td>
-    </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-  </table>
-  </div>
-
-</div>
-<div class="copyright text_align_left" style="position: absolute; bottom: 0; width: 100%">
-               <div class="container">
-                  <div class="row d_flex">
-                     <div class="col-md-6">
-                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
-                     </div>
-                     <div class="col-md-6">
-                        <ul class="social_icon text_align_center">
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
+<div id="container_p">
+   <div class="container pt-5">
+      <div class="notice">
+         <% if flash[:notice] %>
+            <div class="alert alert-success alert-dismissible show fade">
+               <%= flash[:notice] %>
+               <button type="button" class="close" data-dismiss="alert">
+                  <span>&times;</span>
+               </button>
             </div>
+         <% end %>
+      </div> 
+      <div style="text-align: center; paddinng-top: 30px"><h1>Réservations en cours</h1></div>
+      <div class="row border-bottom border-dark">
+         <% @bookings.each do |booking| %>
+            <% if booking.travel.date > Date.today %>
+               <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-3">
+                  <section class="card bg-light text-dark">
+                     <div class="card-body">
+                        <p class="d-flex justify-content-around"><%= booking.travel.starting_station.city %> <i class="bi bi-bus-front"></i> <%= booking.travel.destination_station.city %></p>
+                        <p class="d-flex justify-content-around">Départ prévu le <%= booking.travel.formatted_date %> à <%= booking.travel.formatted_time %></p>
+                        <span class="d-flex justify-content-around"> 
+                           <%= link_to "Détails", booking_path(booking.confirmation), class:"btn btn-outline-dark"%>
+                        </span>
+                     </div>
+                  </section>
+               </div>
+            <% end %>   
+         <% end %>
+      </div>
+      <div style="text-align: center;"><h1>Réservations expirées</h1></div>
+      <div class="row">
+         <% @bookings.each do |booking| %>
+            <% if booking.travel.date <= Date.today %>
+               <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-3">
+                  <section class="card bg-light text-dark">
+                     <div class="card-body">
+                        <p class="d-flex justify-content-around"><%= booking.travel.starting_station.city %> <i class="bi bi-bus-front"></i> <%= booking.travel.destination_station.city %></p>
+                        <p class="d-flex justify-content-around">Départ prévu le <%= booking.travel.formatted_date %> à <%= booking.travel.formatted_time %></p>
+                        <span class="d-flex justify-content-around"> 
+                           <%= link_to "Détails", booking_path(booking.confirmation), class:"btn btn-outline-dark"%>
+                        </span>
+                     </div>
+                  </section>
+               </div>
+            <% end %>   
+         <% end %>
+      </div>
+   </div>
+</div>

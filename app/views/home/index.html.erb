@@ -1,46 +1,35 @@
-<div class="container-fluid" id="top_section">
-   <div class="notice">
-      <% if flash[:notice] %>
-         <div class="alert alert-success"><%= flash[:notice] %></div>
-      <% end %>
-   </div>   
-
-  <div style="padding: 100px 0px 0px 250px;">
-    <p style="font-weight: bold; color: #fff; font-size: 60px">Welcome<br> on BusLink</p>
-    <p style="font-weight: bold; color: #fff; font-size: 20px">Your trusted trucking company!<br> Whether you want to travel to another city<br> on business or enjoy a relaxing getaway,<br> BusLink is there to accompany you.</p> 
-    <% if user_signed_in? %>
-      <p style="font-weight: bold; color: #fff; font-size: 20px">Want to start using it?  <span><%= content_tag :a, "Travels list", href: travels_path, class: "btn btn-light" %></span></p>
-    <% else %>
-      <p style="font-weight: bold; color: #fff; font-size: 20px">Want to join us?  <span><%= content_tag :a, "Register", href: new_user_registration_path, class: "btn btn-light" %></span></p>
-    <% end %>
-  </div>
-</div>
-<div class="container">
-  <p style="font-weight: bold; font-size: 50px; text-align: center" >What we do</p> 
-
-  <p style="font-weight: bold; font-size: 20px">Our user-friendly web application makes it easy for you to book travel from our vast selection of itineraries. With just a few clicks, you can explore available destinations, check schedules, and make your booking with ease. We strive to make your booking experience as seamless as possible, allowing you to focus on the excitement of your next adventure.</p></br>
-
-  <p style="font-weight: bold; font-size: 20px">With BusLink, you'll enjoy safe, comfortable travel aboard our modern, well-maintained coaches. Our team of experienced and courteous drivers will ensure that your journey is pleasant and hassle-free. What's more, our network of conveniently located stations makes it easy for you to get around, offering convenient access to a multitude of destinations across the country.</p></br>
-
-  <p style="font-weight: bold; font-size: 20px">We understand the importance of flexibility when traveling. That's why we've introduced features like reservation modification and cancellation, giving you the freedom to adapt your plans to suit your needs.</p></br>
-
-  <p style="font-weight: bold; font-size: 20px">Join us now on BusLink and let us guide you to your next destination. <span><%= content_tag :a, "Register", href: new_user_registration_path, class: "btn btn-dark" %></span></p>
-</div>
-            <div class="copyright text_align_left">
-               <div class="container">
-                  <div class="row d_flex">
-                     <div class="col-md-6">
-                        <p style="color: #fff; font-size: 20px">© 2023 All Rights Reserved.   BusLink</p>
-                     </div>
-                     <div class="col-md-6">
-                        <ul class="social_icon text_align_center">
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-facebook"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-twitter"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
-                           <li> <a href="Javascript:void(0)"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
+<div id="container_p">
+   <div class="container-fluid" id="top_section">
+      <div class="notice">
+         <% if flash[:notice] %>
+            <div class="alert alert-success alert-dismissible show fade">
+               <%= flash[:notice] %>
+               <button type="button" class="close" data-dismiss="alert">
+                  <span>&times;</span>
+               </button>
             </div>
+         <% end %>
+      </div>   
+
+      <div class="row">
+         <p style="font-weight: bold; color: #fff; font-size: 60px" class="col-8 offset-2">Bienvenue<br> sur BusLink</p>
+         <p class="col-8 offset-2 font-weight-bold text-light">Votre compagnie de voyage de confiance!<br>Que vous souhaitiez vous rendre dans une autre ville<br>pour affaires ou profiter d'une escapade relaxante,<br> BusLink est là pour vous accompagner.</p> 
+         <% if user_signed_in? %>
+            <p class="col-8 offset-2 font-weight-bold text-light">Voulez-vous tenter l'experience?  <span><%= content_tag :a, "Nos Voyages", href: travels_path, class: "btn btn-light" %></span></p>
+         <% else %>
+            <p class="col-8 offset-2 font-weight-bold text-light">Voulez-vous nous rejoindre?  <span><%= content_tag :a, "S'inscrire", href: new_user_registration_path, class: "btn btn-light" %></span></p>
+         <% end %>
+      </div>
+   </div>
+   <div class="container">
+      <p style="font-weight: bold; font-size: 50px; text-align: center" >Notre mission</p> 
+
+      <p class="font-weight-bold">Notre application web conviviale vous permet de réserver facilement vos voyages parmi notre vaste sélection d'itinéraires. En quelques clics, vous pouvez explorer les destinations disponibles, vérifier les horaires et effectuer votre réservation en toute simplicité. Nous nous efforçons de rendre votre expérience de réservation aussi fluide que possible, vous permettant ainsi de vous concentrer sur l'excitation de votre prochaine aventure.</p></br>
+
+      <p class="font-weight-bold">Avec BusLink, vous bénéficiez de voyages sécurisés et confortables à bord de nos cars modernes et bien entretenus. Notre équipe de conducteurs expérimentés et courtois veillera à ce que votre trajet soit agréable et sans souci. De plus, notre réseau de stations bien situées facilite vos déplacements, en vous offrant un accès pratique à une multitude de destinations à travers le pays.</p></br>
+
+      <p class="font-weight-bold">Nous comprenons l'importance de la flexibilité lors de vos déplacements. C'est pourquoi nous avons mis en place des fonctionnalités telles que la modification et l'annulation de réservation, vous offrant ainsi la liberté d'adapter vos plans selon vos besoins.</p></br>
+
+      <p class="font-weight-bold">Rejoignez-nous dès maintenant sur BusLink et laissez-nous vous guider vers votre prochaine destination.  <span><%= content_tag :a, "S'inscrire", href: new_user_registration_path, class: "btn btn-dark" %></span></p>
+   </div>
+</div>

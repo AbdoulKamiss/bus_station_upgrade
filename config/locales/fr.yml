@@ -1,0 +1,61 @@
+fr:
+  activerecord:
+    models:
+      shop: ショップ
+    attributes:
+      genre:
+        name: ジャンル名
+      shop:
+        name: 名称
+        prefecture: 都道府県
+        city: 市区町村
+        address: 住所
+        latitude: 緯度
+        longitude: 経度
+        business_hour: 営業時間
+        cashless: キャッシュレス
+        bike_rack: サイクルラック
+        remarks: 備考
+    errors:
+      models:
+        genre:
+          attributes:
+            name:
+              blank: を入力してください
+        user:
+          attributes:
+            email:
+              taken: が無効です。既に登録されています。
+              blank: を入力してください。
+            password:
+              blank: を入力してください。
+              too_short: は6文字以上で設定してください。
+            current_password:
+              blank: を入力してください。
+              invalid: が間違っています。正しいパスワードを入力してください。
+            password_confirmation:
+              confirmation: に入力された値がパスワードと異なります。
+            name:
+              blank: を入力してください。
+        shop:
+          attributes:
+            name:
+              blank: を入力してください。
+            prefecture:
+              blank: を入力してください。
+            city:
+              blank: を入力してください。
+            address:
+              blank: を入力してください。
+            latitude:
+              blank: を入力してください。
+            longitude:
+              blank: を入力してください。
+            business_hour:
+              blank: を入力してください。
+  errors:
+    link: ホーム画面へ
+  attributes:
+    create: 作成する
+    update: 更新する
+    back: 戻る

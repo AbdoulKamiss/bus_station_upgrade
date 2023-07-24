@@ -54,6 +54,7 @@ group :development do
   gem 'geocoder'
   gem 'gmaps4rails'
   gem 'dotenv-rails'
+  gem 'securerandom'
 end
 
 group :test do

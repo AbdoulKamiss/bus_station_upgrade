@@ -10,7 +10,7 @@ class TravelsController < ApplicationController
     def create
         @travel = Travel.new(travel_params)
         if @travel.save
-          flash[:notice] = 'Travel was successfully created.'
+          flash[:notice] = 'Le voyage a été créer avec succès.'
           redirect_to @travel
         else
           render :new
@@ -30,7 +30,7 @@ class TravelsController < ApplicationController
     def update
         @travel = Travel.find(params[:id])
         if @travel.update(travel_params)
-          flash[:notice] = 'Travel was successfully updated.'
+          flash[:notice] = 'Le voyage a été modifier avec succès.'
           redirect_to @travel
         else
           render :edit
@@ -40,7 +40,7 @@ class TravelsController < ApplicationController
     def destroy
         @travel = Travel.find(params[:id])
         @travel.destroy
-        flash[:notice] = 'Travel was successfully destroyed.'
+        flash[:notice] = 'Le voyage a été annuler avec succès.'
         redirect_to root_path
     end
       
@@ -54,7 +54,7 @@ class TravelsController < ApplicationController
         end
         def authorize_admin
             unless current_user.admin?
-              flash[:alert] = "You are not authorized to perform this action."
+              flash[:alert] = "Vous n'êtes pas autoriser à faire cette action."
               redirect_to root_path
             end
         end

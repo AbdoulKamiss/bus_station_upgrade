@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       UserBooking.create(user_id: current_user.id, booking_id: @booking.id)
-      flash[:notice] = "Travel successfully booked!"
+      flash[:notice] = "Le voyage a été réserver avec succès."
       redirect_to booking_path(@booking.confirmation)
     else
       @travel = Travel.find(params[:booking][:travel_id])
@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
     if @booking
       render :show
     else
-      flash[:alert] = 'Sorry, the booking you\'re looking for does not exist.'
+      flash[:alert] = 'Désolé la réservation que vous recherchez n\'existe pas.'
       redirect_to root_url
     end
   end
@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find_by(confirmation: params[:id])
     @booking.destroy
-    flash[:notice] = 'Booking was successfully canceled.'
+    flash[:notice] = 'La réservation a été annuler avec succès.'
     redirect_to bookings_url
   end
 

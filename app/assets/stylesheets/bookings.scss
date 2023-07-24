@@ -134,3 +134,11 @@ $ticket-border: 1px dashed #b3b3b3;
   margin-bottom: 20px;
   margin-top: 20px;
 }
+@media (max-width: 575px) {
+  #map{
+    width: 380px;
+    height: 240px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
