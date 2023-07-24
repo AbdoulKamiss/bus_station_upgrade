@@ -5,12 +5,12 @@ RSpec.describe "Users", type: :system do
     context 'when a user create an account' do
       it 'redirect to root path' do
         visit new_user_registration_path
-        fill_in 'Name', with: 'John'
+        fill_in 'Nom', with: 'John'
         fill_in 'Email', with: 'john@gmail.com'
-        fill_in 'Password', with: '123456'
-        fill_in 'Password confirmation', with: '123456'
-        click_on 'Sign up'
-        expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.'
+        fill_in 'Mot de passe', with: '123456'
+        fill_in 'Confirmation mot de passe', with: '123456'
+        click_on 'S\'inscrire'
+        expect(page).to have_content 'Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte.'
       end
     end
     context 'when a user tries to edit his profile' do
@@ -20,16 +20,16 @@ RSpec.describe "Users", type: :system do
       it 'will work' do
         visit new_user_session_path
         fill_in 'Email', with: @user.email
-        fill_in 'Password', with: @user.password
-        click_on 'Log in'
-        click_on 'My Profile'
-        click_on 'Edit my profile'
-        fill_in 'Name', with: 'Johnny'
-        fill_in 'Current password', with: '123456'
-        click_on 'Update'
-        expect(page).to have_content 'Your account has been updated successfully.'
-        click_on 'My Profile'
-        expect(page).to have_content 'Profile of Johnny'
+        fill_in 'Mot de passe', with: @user.password
+        click_on 'Se connecter'
+        click_on 'Ma page'
+        click_on 'Modifier mon profil'
+        fill_in 'Nom', with: 'Johnny'
+        fill_in 'Mot de passe actuel', with: '123456'
+        click_on 'Modifier'
+        expect(page).to have_content 'Votre compte a été modifié avec succès.'
+        click_on 'Ma page'
+        expect(page).to have_content 'Johnny'
       end
     end
     context 'when a user cancel his account' do
@@ -39,13 +39,13 @@ RSpec.describe "Users", type: :system do
       it 'will work and redirect to root path' do
         visit new_user_session_path
         fill_in 'Email', with: 'john@gmail.com'
-        fill_in 'Password', with: '123456'
-        click_on 'Log in'
-        click_on 'My Profile'
-        click_on 'Edit my profile'
-        click_on 'Cancel my account'
+        fill_in 'Mot de passe', with: '123456'
+        click_on 'Se connecter'
+        click_on 'Ma page'
+        click_on 'Modifier mon profil'
+        click_on 'Annuler mon inscription'
         page.accept_confirm
-        expect(page).to have_content 'Bye! Your account has been successfully cancelled. We hope to see you again soon.'
+        expect(page).to have_content 'Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt.'
       end
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe "Users", type: :system do
       end
       it 'is rejected and redirect to login page' do
         visit travels_path
-        expect(page).to have_content 'Log in'
+        expect(page).to have_content 'Connexion'
       end
     end
     context 'when a existing user log in and log out' do
@@ -66,11 +66,11 @@ RSpec.describe "Users", type: :system do
       it 'is successfully working' do
         visit new_user_session_path
         fill_in 'Email', with: 'john@gmail.com'
-        fill_in 'Password', with: '123456'
-        click_on 'Log in'
-        expect(page).to have_content 'Signed in successfully'
-        click_on 'Logout'
-        expect(page).to have_content 'Signed out successfully'
+        fill_in 'Mot de passe', with: '123456'
+        click_on 'Se connecter'
+        expect(page).to have_content 'Connecté.'
+        click_on 'Deconnexion'
+        expect(page).to have_content 'Déconnecté.'
       end
     end
   end
@@ -83,15 +83,54 @@ RSpec.describe "Users", type: :system do
       it 'only admin user is able to access to admin dashboard' do
         visit new_user_session_path
         fill_in 'Email', with: 'john@gmail.com'
-        fill_in 'Password', with: '123456'
-        click_on 'Log in'
-        expect(page).not_to have_content 'Admin Dashbord'
-        click_on 'Logout'
-        click_on 'Login'
+        fill_in 'Mot de passe', with: '123456'
+        click_on 'Se connecter'
+        expect(page).not_to have_content 'Panneau de contrôle'
+        click_on 'Deconnexion'
+        click_on 'Connexion'
         fill_in 'Email', with: 'admin@example.com'
-        fill_in 'Password', with: 'password'
-        click_on 'Log in'
-        expect(page).not_to have_content 'Admin Dashbord'
+        fill_in 'Mot de passe', with: 'password'
+        click_on 'Se connecter'
+        expect(page).to have_content 'Panneau de contrôle'
+      end
+    end
+  end
+  describe 'Admin privilege' do
+    context 'when an admin tries to delete a user' do
+      before do
+        @user = FactoryBot.create(:user, confirmed_at: DateTime.now)
+        sleep(5)
+        @admin = FactoryBot.create(:user, name: 'admin', email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true, confirmed_at: DateTime.now)
+      end
+      it 'will work' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'admin@example.com'
+        fill_in 'Mot de passe', with: 'password'
+        click_on 'Se connecter'
+        visit users_path
+        click_on('Supprimer', match: :first)
+        page.accept_confirm
+        expect(page).to have_content 'L\'utilisateur a été supprimer avec succès.'
+      end
+    end
+    context 'when an admin tries to modify a user' do
+      before do
+        @user = FactoryBot.create(:user, confirmed_at: DateTime.now)
+        sleep(5)
+        @admin = FactoryBot.create(:user, name: 'admin', email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true, confirmed_at: DateTime.now)
+      end
+      it 'will work' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'admin@example.com'
+        fill_in 'Mot de passe', with: 'password'
+        click_on 'Se connecter'
+        visit users_path
+        click_on('Modifier', match: :first)
+        fill_in 'Mot de passe', with: '123456'
+        fill_in 'Confirmation mot de passe', with: '123456'
+        check 'Admin'
+        click_on 'Modifier'
+        expect(page).to have_content 'L\'utilisateur a été modifier avec succès'
       end
     end
   end

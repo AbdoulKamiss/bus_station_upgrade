@@ -21,7 +21,7 @@
                      <p class="d-flex justify-content-around">Administrateur: <%= user.admin? ? 'Oui' : 'Non' %></p>
                      <span class="d-flex justify-content-around"> 
                         <%= button_to 'Modifier', edit_user_path(user), method: :get, class:"btn btn-outline-dark" %>
-                        <%= button_to 'Supprimer', user, method: :delete, data: {confirm: "Are you sure?" }, class:"btn btn-dark" %>              
+                        <%= button_to 'Supprimer', user, method: :delete, data: {confirm: "Êtes-vous sûr?" }, class:"btn btn-dark" %>              
                      </span>
                   </div>
                </section>

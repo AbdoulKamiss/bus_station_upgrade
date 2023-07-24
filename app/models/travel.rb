@@ -38,7 +38,7 @@ class Travel < ApplicationRecord
     
     def different_starting_and_destination_stations
         if starting_station_id == destination_station_id
-          errors.add(:base, "Starting station and destination station must be different")
+          errors.add(:base, "Le départ et l'arrivée doivent être différents.")
         end
     end
 end

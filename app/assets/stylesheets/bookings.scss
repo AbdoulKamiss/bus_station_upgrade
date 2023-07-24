@@ -8,10 +8,10 @@ $ticket-border: 1px dashed #b3b3b3;
 .ticket-container {
   width: $ticket-width;
   box-sizing: border-box;
-  // margin-top: 4vh;
-  margin-left: auto;
+  margin-top: 4vh;
+  margin-left: auto; 
   margin-right: auto;
-  // border: 1px solid #cecece;
+  width: 700px;
 }
 
 .ticket {
@@ -21,6 +21,10 @@ $ticket-border: 1px dashed #b3b3b3;
   background-color: #fdfdfd;
   margin-top: 4vh;
   border: 1px solid #cecece;
+}
+
+#ticket-mini{
+  display: none;
 }
 
 .ticket-item {
@@ -134,11 +138,29 @@ $ticket-border: 1px dashed #b3b3b3;
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .ticket-container{
+    display: none;
+  }
+  #ticket-mini{
+    display: unset;
+    background-color: #fdfdfd;
+  }
+}
+
 @media (max-width: 575px) {
   #map{
     width: 380px;
     height: 240px;
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+  .ticket-container{
+    display: none;
+  }
+  #ticket-mini{
+    display: unset;
+    background-color: #fdfdfd;
   }
 }

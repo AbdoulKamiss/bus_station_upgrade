@@ -1,61 +1,51 @@
 fr:
   activerecord:
     models:
-      shop: ショップ
+      user: Utilisateur
+      travel: Voyage
+      booking: Réservation
     attributes:
-      genre:
-        name: ジャンル名
-      shop:
-        name: 名称
-        prefecture: 都道府県
-        city: 市区町村
-        address: 住所
-        latitude: 緯度
-        longitude: 経度
-        business_hour: 営業時間
-        cashless: キャッシュレス
-        bike_rack: サイクルラック
-        remarks: 備考
+      user:
+        name: Nom
+        email: Email
+        password: Mot de passe
+        password_confirmation: Confirmation mot de passe
+        current_password: Mot de passe actuel
+      travel:
+        date: Date
+        time: Heure
+        duration: Durée
+        starting_station_id: Départ
+        destination_station_id: Arrivée
     errors:
       models:
-        genre:
-          attributes:
-            name:
-              blank: を入力してください
         user:
           attributes:
             email:
-              taken: が無効です。既に登録されています。
-              blank: を入力してください。
+              taken: que vous avez saisi est déjà utilisé.
+              blank: n'a pas été saisi.
             password:
-              blank: を入力してください。
-              too_short: は6文字以上で設定してください。
+              blank: n'a pas été saisi.
+              too_short: que vous avez saisi est trop court.
             current_password:
-              blank: を入力してください。
-              invalid: が間違っています。正しいパスワードを入力してください。
+              blank: n'a pas été saisi.
+              invalid: que vous avez saisi ne correspond pas au mot de passe actuel.
             password_confirmation:
-              confirmation: に入力された値がパスワードと異なります。
+              confirmation: est différent du mot de passe saisi.
             name:
-              blank: を入力してください。
-        shop:
+              blank: n'a pas été saisi.
+        travel:
           attributes:
-            name:
-              blank: を入力してください。
-            prefecture:
-              blank: を入力してください。
-            city:
-              blank: を入力してください。
-            address:
-              blank: を入力してください。
-            latitude:
-              blank: を入力してください。
-            longitude:
-              blank: を入力してください。
-            business_hour:
-              blank: を入力してください。
-  errors:
-    link: ホーム画面へ
-  attributes:
-    create: 作成する
-    update: 更新する
-    back: 戻る
+            date:
+              blank: n'a pas été saisi.
+            time:
+              blank: n'a pas été saisi.
+            duration:
+              blank: n'a pas été saisi.
+            starting_station:
+              required: n'a pas été saisi.
+              blank: n'a pas été saisi.
+            destination_station:
+              required: n'a pas été saisi.
+              blank: n'a pas été saisi.
+            

@@ -10,8 +10,8 @@ RSpec.describe "Travels", type: :system do
       it 'will not work' do
         visit new_user_session_path
         fill_in 'Email', with: @user.email
-        fill_in 'Password', with: @user.password
-        click_on 'Log in'
+        fill_in 'Mot de passe', with: @user.password
+        click_on 'Se connecter'
         visit new_travel_path
         expect(current_path).to eq root_path
       end
@@ -24,16 +24,16 @@ RSpec.describe "Travels", type: :system do
       it 'will work' do
         visit new_user_session_path
         fill_in 'Email', with: @admin.email
-        fill_in 'Password', with: @admin.password
-        click_on 'Log in'
-        click_on 'Add-Travels'
+        fill_in 'Mot de passe', with: @admin.password
+        click_on 'Se connecter'
+        click_on 'Créer un voyage'
         fill_in 'Date', with: '2023-08-05'
-        fill_in 'Time', with: '09:00:00'
-        fill_in 'Duration', with: '200'
-        select(@station1.name, from: 'Starting station')
-        select(@station2.name, from: 'Destination station')
-        click_on 'Create Travel'
-        expect(page).to have_content 'Travel was successfully created.'
+        fill_in 'Heure', with: '09:00:00'
+        fill_in 'Durée', with: '200'
+        select(@station1.name, from: 'Départ')
+        select(@station2.name, from: 'Arrivée')
+        click_on 'Créer'
+        expect(page).to have_content 'Le voyage a été créer avec succès.'
       end
     end
     context 'When an admin tries to edit a travel' do
@@ -43,13 +43,14 @@ RSpec.describe "Travels", type: :system do
       it 'will work' do
         visit new_user_session_path
         fill_in 'Email', with: @admin.email
-        fill_in 'Password', with: @admin.password
-        click_on 'Log in'
+        fill_in 'Mot de passe', with: @admin.password
+        click_on 'Se connecter'
+        sleep(3)
         visit travel_path(@travel.id)
-        click_on 'Edit'
-        fill_in 'Duration', with: '500'
-        click_on 'Update'
-        expect(page).to have_content 'Travel was successfully updated.'
+        click_on 'Modifier'
+        fill_in 'Durée', with: '500'
+        click_on 'Modifier'
+        expect(page).to have_content 'Le voyage a été modifier avec succès.'
       end
     end
     context 'When an admin tries to destroy a travel' do
@@ -59,14 +60,13 @@ RSpec.describe "Travels", type: :system do
       it 'will work' do
         visit new_user_session_path
         fill_in 'Email', with: @admin.email
-        fill_in 'Password', with: @admin.password
-        click_on 'Log in'
-        sleep(5)
+        fill_in 'Mot de passe', with: @admin.password
+        click_on 'Se connecter'
+        sleep(3)
         visit travel_path(@travel.id)
-        sleep(5)
-        click_on 'Delete'
+        click_on 'Supprimer'
         page.accept_confirm
-        expect(page).to have_content 'Travel was successfully destroyed.'
+        expect(page).to have_content 'Le voyage a été annuler avec succès.'
       end
     end
   end
