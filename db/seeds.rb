@@ -106,7 +106,7 @@ ActiveRecord::Base.transaction do
     stations[8] = Station.create(code: 'MNK', name: 'Menaka Station', city: 'Menaka', latitude: '15.9182', longitude: '2.4022')
     stations[9] = Station.create(code: 'BKO', name: 'Bamako Station', city: 'Bamako', latitude: '12.65', longitude: '-8')
 
-    Date.new(2023, 7, 16).upto(Date.new(2023, 7, 31)).each do |date|
+    Date.new(2023, 7, 25).upto(Date.new(2023, 8, 8)).each do |date|
         stations.each do |starting_station|
           stations.each do |destination_station|
             next if starting_station == destination_station

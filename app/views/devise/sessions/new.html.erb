@@ -5,8 +5,16 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <form>
-          <%= render "devise/shared/error_messages", resource: resource %>
-          
+          <% if alert.present? %>
+            <p class="alert has-background-white">
+              <% if alert == 'Invalid Email or password.' %>
+                Email ou mot de passe incorrect
+              <% else %>
+                <%= alert %>
+              <% end %>
+            </p>
+          <% end %>
+
           <div class="form-group">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input", placeholder:"Email" %>
           </div>

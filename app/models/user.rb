@@ -9,6 +9,7 @@ class User < ApplicationRecord
          has_many :travels, through: :bookings
 
          validates :name, presence: true 
+         validates :email, presence: true
          
 
          def self.guest
