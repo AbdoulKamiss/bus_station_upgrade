@@ -107,8 +107,9 @@ RSpec.describe "Users", type: :system do
         fill_in 'Email', with: 'admin@example.com'
         fill_in 'Mot de passe', with: 'password'
         click_on 'Se connecter'
+        sleep(2)
         visit users_path
-        sleep(3)
+        sleep(2)
         click_on('Supprimer', match: :first)
         page.accept_confirm
         expect(page).to have_content 'L\'utilisateur a été supprimer avec succès.'
@@ -125,8 +126,9 @@ RSpec.describe "Users", type: :system do
         fill_in 'Email', with: 'admin@example.com'
         fill_in 'Mot de passe', with: 'password'
         click_on 'Se connecter'
+        sleep(2)
         visit users_path
-        sleep(3)
+        sleep(2)
         click_on('Modifier', match: :first)
         fill_in 'Mot de passe', with: '123456'
         fill_in 'Confirmation mot de passe', with: '123456'

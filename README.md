@@ -26,7 +26,7 @@ https://docs.google.com/spreadsheets/d/15ncN_yxSqJ6vShiC1CxW_yYuoiBb7CnqMmr7Wk8p
 https://www.figma.com/file/1ibuG8LLrmBJDOvIcipxVO/Untitled?type=design&node-id=0-1&mode=design&t=MkEEKSKJKmWo2IQA-0
 
 ### ER diagram
-![ER](https://i.gyazo.com/67f68d9dc1c565dbfa3ef48ca3d87af8.png)
+![ER](https://i.gyazo.com/45328dcb438ed2d630ce57b7a48197b9.png)
 
 ### Screen transition diagram
 ![Screen](https://i.gyazo.com/f5e15e23605218834c8b334289ea5659.png)

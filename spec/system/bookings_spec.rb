@@ -24,6 +24,7 @@ RSpec.describe "Bookings", type: :system do
         fill_in 'Email', with: @user.email
         fill_in 'Mot de passe', with: @user.password
         click_on 'Se connecter'
+        sleep(2)
         visit travel_path(@travel)
         click_on 'Réserver'
         click_on 'Confirmer'
