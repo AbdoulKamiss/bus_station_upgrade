@@ -10,7 +10,7 @@ RSpec.describe "Users", type: :system do
         fill_in 'Mot de passe', with: '123456'
         fill_in 'Confirmation mot de passe', with: '123456'
         click_on 'S\'inscrire'
-        expect(page).to have_content 'Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte.'
+        expect(page).to have_content 'Bienvenue, vous êtes connecté.'
       end
     end
     context 'when a user tries to edit his profile' do
@@ -108,6 +108,7 @@ RSpec.describe "Users", type: :system do
         fill_in 'Mot de passe', with: 'password'
         click_on 'Se connecter'
         visit users_path
+        sleep(3)
         click_on('Supprimer', match: :first)
         page.accept_confirm
         expect(page).to have_content 'L\'utilisateur a été supprimer avec succès.'
@@ -125,6 +126,7 @@ RSpec.describe "Users", type: :system do
         fill_in 'Mot de passe', with: 'password'
         click_on 'Se connecter'
         visit users_path
+        sleep(3)
         click_on('Modifier', match: :first)
         fill_in 'Mot de passe', with: '123456'
         fill_in 'Confirmation mot de passe', with: '123456'
