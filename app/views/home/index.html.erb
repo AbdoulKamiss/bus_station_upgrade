@@ -30,6 +30,6 @@
 
       <p class="font-weight-bold">Nous comprenons l'importance de la flexibilité lors de vos déplacements. C'est pourquoi nous avons mis en place des fonctionnalités telles que la modification et l'annulation de réservation, vous offrant ainsi la liberté d'adapter vos plans selon vos besoins.</p></br>
 
-      <p class="font-weight-bold">Rejoignez-nous dès maintenant sur BusLink et laissez-nous vous guider vers votre prochaine destination.  <span><%= content_tag :a, "S'inscrire", href: new_user_registration_path, class: "btn btn-dark" %></span></p>
+      <p class="font-weight-bold">Rejoignez-nous dès maintenant sur BusLink et laissez-nous vous guider vers votre prochaine destination.  <% unless user_signed_in? %><span><%= content_tag :a, "S'inscrire", href: new_user_registration_path, class: "btn btn-dark" %></span></p><% end %>
    </div>
 </div>
