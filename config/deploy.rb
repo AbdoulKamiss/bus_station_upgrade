@@ -3,7 +3,7 @@ lock "~> 3.17.3"
 
 set :application, "bus_station"    
 set :repo_url, "https://github.com/AbdoulKamiss/bus_station.git"    
-set :linked_files, %w{config/secrets.yml .env}   
+set :linked_files, %w{config/secrets.yml}   
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}   
 set :keep_releases, 5   
 set :rbenv_ruby, '3.0.1'    
