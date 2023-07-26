@@ -56,22 +56,21 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-group :production do
-  gem 'devise'
-  gem 'rexml'
-  gem 'letter_opener_web'
-  gem 'rails_admin', '~> 3.0'
-  gem 'cancancan'
-  gem 'faker'
-  gem 'kaminari'
-  gem 'bootstrap-kaminari-views'
-  gem 'ransack'
-  gem 'geocoder'
-  gem 'gmaps4rails'
-  gem 'dotenv-rails'
-  gem 'securerandom'
-  gem 'capistrano', '~> 3.10', require: false
-  gem 'capistrano-rails', '~> 1.6', require: false 
-  gem 'capistrano-safe-deploy-to' 
-  gem 'capistrano3-unicorn'
-end
+
+gem 'devise'
+gem 'rexml'
+gem 'letter_opener_web'
+gem 'rails_admin', '~> 3.0'
+gem 'cancancan'
+gem 'faker'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'ransack'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'dotenv-rails'
+gem 'securerandom'
+gem 'capistrano', '~> 3.10', require: false
+gem 'capistrano-rails', '~> 1.6', require: false 
+gem 'capistrano-safe-deploy-to' 
+gem 'capistrano3-unicorn'
