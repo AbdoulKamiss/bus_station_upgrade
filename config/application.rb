@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'devise'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -11,8 +12,8 @@ module BusStation
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    #config.generators.system_tests = nil
-    #config.action_dispatch.show_exceptions = true
+    config.generators.system_tests = nil
+    config.action_dispatch.show_exceptions = true
     config.i18n.default_locale = :fr
 
     # Settings in config/environments/* take precedence over those specified here.
