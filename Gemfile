@@ -55,6 +55,9 @@ group :development do
   gem 'gmaps4rails'
   gem 'dotenv-rails'
   gem 'securerandom'
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-rails', '~> 1.6', require: false 
+  gem 'capistrano-safe-deploy-to' 
 end
 
 group :test do
