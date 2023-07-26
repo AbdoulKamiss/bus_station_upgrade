@@ -7,7 +7,8 @@ set :linked_files, %w{config/secrets.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}   
 set :keep_releases, 5   
 set :rbenv_ruby, '3.0.1'    
-set :log_level, :info   
+set :log_level, :info  
+set :default_env, { path: "/path/to/rbenv/shims:$PATH" } 
 
 after 'deploy:published', 'deploy:seed'   
 after 'deploy:finished', 'deploy:restart'   
