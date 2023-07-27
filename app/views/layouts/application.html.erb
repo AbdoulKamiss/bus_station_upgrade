@@ -49,9 +49,11 @@
                               <li class="nav-item">
                                 <%= content_tag :a, "Voyages", href: travels_path, class: "nav-link" %>
                               </li>
+                              <% unless current_user.admin? %>
                               <li class="nav-item">
                                 <%= content_tag :a, "Réservations", href: bookings_path, class: "nav-link" %>
                               </li>
+                              <% end %>
                               <li class="nav-item">
                                 <%= link_to "Ma page", user_path(current_user), class: "nav-link" %>
                               </li>
