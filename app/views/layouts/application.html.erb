@@ -36,9 +36,9 @@
                            <ul class="navbar-nav">
                            <% if user_signed_in? %>
                            <% if current_user.admin? %>
-                              <li class="nav-item">
+                              <!--<li class="nav-item">
                                 <%= content_tag :a, "Panneau de contrôle", href: rails_admin_path, class: "nav-link" %>
-                              </li>
+                              </li>-->
                               <li class="nav-item">
                                 <%= content_tag :a, "Créer un voyage", href: new_travel_path, class: "nav-link" %>
                               </li>
