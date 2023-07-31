@@ -19,8 +19,9 @@ class TravelsController < ApplicationController
 
     def index
         @q = Travel.ransack(params[:q])
-        @travels = @q.result(distinct: true).order(:date).page(params[:page])
-        #@travels = @q.result(distinct: true).where('date >= ?', Date.today).order(:date).page(params[:page])
+        #@travels = @q.result(distinct: true).order(:date).page(params[:page])
+        @travels = @q.result(distinct: true).where('date >= ?', Date.today).order(:date).page(params[:page])
+        @available_dates = Travel.select(:date).where("date >= ?", Date.today).distinct.order(:date)
     end
 
     def edit

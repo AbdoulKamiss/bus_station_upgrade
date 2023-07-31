@@ -2,6 +2,8 @@ class Booking < ApplicationRecord
   belongs_to :travel 
   has_many :user_bookings, dependent: :destroy
   has_many :users, through: :user_bookings, inverse_of: :bookings
+  has_many :passengers, dependent: :destroy
+  accepts_nested_attributes_for :passengers
   
 
   before_save :ensure_confirmation

@@ -19,7 +19,7 @@
             <%= f.collection_select :destination_station_id_eq, Station.all, :id, :name, { prompt: "Arrivée" }, class: "form-control mr-5 my-1" %>
          </div>
          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <%= f.collection_select :date_eq, Travel.select(:date).distinct.order(:date), :date, :formatted_date, { prompt: "Date" }, class:"form-control mr-5 my-1"%>
+            <%= f.collection_select :date_eq, @available_dates, :date, :formatted_date, { prompt: "Date" }, class: "form-control mr-5 my-1" %>
          </div>
          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <%= f.submit "Rechercher", class:"btn btn-outline-dark my-1 my-sm-1 my-md-1" %>

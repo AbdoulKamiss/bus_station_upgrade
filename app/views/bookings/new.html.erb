@@ -44,6 +44,10 @@
       <%= form_with(model: @booking, local: true) do |form| %>
         <%= form.hidden_field :travel_id, value: @travel.id %>
         <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.label :number_of_passengers %>
+        <%= form.number_field :number_of_passengers, min: 0, max: 3, onchange: "showPassengerFields()" %>
+
+        <div id="passenger-fields"></div>
         <%= link_to 'Annuler', travels_path, class:"btn btn-dark",id: 'cancel-booking' %>
         <%= form.submit 'Confirmer', class:"btn btn-outline-dark", id: 'book-travel' %>
       <% end %>

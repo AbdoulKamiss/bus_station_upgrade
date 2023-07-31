@@ -14,7 +14,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
+      @booking.number_of_passengers.times do
+        @booking.passengers.build
+      end
       UserBooking.create(user_id: current_user.id, booking_id: @booking.id)
+      
       flash[:notice] = "Le voyage a été réserver avec succès."
       redirect_to booking_path(@booking.confirmation)
     else
@@ -43,6 +47,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:travel_id)
+    params.require(:booking).permit(:travel_id, :number_of_passengers, passengers_attributes: [:name])
   end
 end

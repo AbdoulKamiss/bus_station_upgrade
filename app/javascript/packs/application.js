@@ -59,4 +59,19 @@ function initMap() {
 
 window.initMap = initMap;
 
-  
+function showPassengerFields() {
+  const numberOfPassengers = document.getElementById("booking_number_of_passengers").value;
+  const passengerFieldsDiv = document.getElementById("passenger-fields");
+  passengerFieldsDiv.innerHTML = "";
+
+  for (let i = 0; i < numberOfPassengers; i++) {
+    const passengerField = document.createElement("div");
+    passengerField.innerHTML = `
+      <label for="booking_passengers_attributes_${i}_name">Nom du passager ${i + 1} :</label>
+      <input type="text" name="booking[passengers_attributes][${i}][name]" id="booking_passengers_attributes_${i}_name">
+    `;
+    passengerFieldsDiv.appendChild(passengerField);
+  }
+}
+
+window.showPassengerFields = showPassengerFields;  

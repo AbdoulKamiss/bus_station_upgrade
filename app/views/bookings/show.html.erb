@@ -91,8 +91,60 @@
           </div>
         </div>
     </div>
+    <% @booking.passengers.each do |passenger| %>
+    <div class='ticket-container'>
+        <div class='ticket'>
+          <div class='logo-main logo ticket-item'>
+          <i class="bi bi-bus-front"></i>
+            <span>BusLink</span>
+          </div>
+          <div class='boarding-pass-main ticket-item'>Ticket d'embarquement</div>
+          <div class='logo-stub logo ticket-item'>
+          <i class="bi bi-bus-front"></i>
+            <span>BusLink</span>
+          </div>
+          <div class='itinerary-main ticket-item'>
+            <span><%= @booking.travel.starting_station.code %></span>
+            <i class="bi bi-bus-front"></i>
+            <span><%= @booking.travel.destination_station.code %></span>
+          </div>
+          <div class='passenger-stub ticket-item'>
+            <div class='ticket-header'>Passager</div>
+            <div><%= passenger.name %></div>
+          </div>
+          <div class='origin-stub ticket-item'>
+            <div class='ticket-header'>Départ</div>
+            <div><%= @booking.travel.starting_station.code %></div>
+          </div>
+          <div class='destination-stub ticket-item stub-right'>
+            <div class='ticket-header'>Arrivée</div>
+            <div><%= @booking.travel.destination_station.code %></div>
+          </div>
+          <div class='passenger-main ticket-item'>
+            <div class='ticket-header'>Passager</div>
+            <div><%= passenger.name %></div>
+          </div>
+          <div class='boarding-main ticket-item'>
+            <div class='ticket-header'>Embarquement</div>
+            <div><%= @booking.travel.boarding_time %></div>
+          </div>
+          <div class='departure-main ticket-item'>
+            <div class='ticket-header'>Départ</div>
+            <div><%= @booking.travel.formatted_time %></div>
+          </div>
+          <div class='boarding-stub ticket-item'>
+            <div class='ticket-header'>Embarquement</div>
+            <div><%= @booking.travel.boarding_time %></div>
+          </div>
+          <div class='departure-stub ticket-item stub-right'>
+            <div class='ticket-header'>Départ</div>
+            <div><%= @booking.travel.formatted_time %></div>
+          </div>
+        </div>
+    </div>
+    <% end %>
       <div class="d-flex justify-content-center" >
-        <div class="border border-dark p-2" style="width: 225px" id="ticket-mini"> 
+        <div class="border border-dark p-2" style="width: 300px" id="ticket-mini"> 
           <div class="pb-4">
             <i class="bi bi-bus-front" style="font-size: 20px"></i><span style="font-family: 'Tangerine', cursive; font-weight: bold; font-size: 20px"> BusLink</span>
           </div>
@@ -117,6 +169,34 @@
           </div>
         </div>
       </div>
+      <% @booking.passengers.each do |passenger| %>
+        <div class="d-flex justify-content-center" >
+        <div class="border border-dark p-2" style="width: 300px" id="ticket-mini"> 
+          <div class="pb-4">
+            <i class="bi bi-bus-front" style="font-size: 20px"></i><span style="font-family: 'Tangerine', cursive; font-weight: bold; font-size: 20px"> BusLink</span>
+          </div>
+          <div>
+            <span style="color: grey">Passager</span></br><span style="font-weight: bold"><%= passenger.name %></span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>
+              <span style="color: grey">Départ</span></br><span style="font-weight: bold"><%= @booking.travel.starting_station.code %></span>
+            </div>
+            <div>
+              <span style="color: grey">Arrivée</span></br><span style="font-weight: bold"><%= @booking.travel.destination_station.code %></span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>
+              <span style="color: grey">Embarquement</span></br><span style="font-weight: bold"><%= @booking.travel.boarding_time %></span>
+            </div>
+            <div>
+              <span style="color: grey">Départ</span></br><span style="font-weight: bold"><%= @booking.travel.formatted_time %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
 
     <div class="d-flex justify-content-center" style="padding-top:20px">
       <p style="padding-right:20px;"> Voulez vous annuler votre voyage ?</p>
