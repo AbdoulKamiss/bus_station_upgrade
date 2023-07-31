@@ -67,8 +67,8 @@ function showPassengerFields() {
   for (let i = 0; i < numberOfPassengers; i++) {
     const passengerField = document.createElement("div");
     passengerField.innerHTML = `
-      <label for="booking_passengers_attributes_${i}_name">Nom du passager ${i + 1} :</label>
-      <input type="text" name="booking[passengers_attributes][${i}][name]" id="booking_passengers_attributes_${i}_name">
+      <!--<label for="booking_passengers_attributes_${i}_name">Nom du passager ${i + 1} :</label>-->
+      <input type="text" name="booking[passengers_attributes][${i}][name]" id="booking_passengers_attributes_${i}_name" class="input" placeholder="Nom du passager">
     `;
     passengerFieldsDiv.appendChild(passengerField);
   }

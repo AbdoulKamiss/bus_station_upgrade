@@ -17,6 +17,8 @@ fr:
         duration: Durée
         starting_station_id: Départ
         destination_station_id: Arrivée
+      booking:
+        number_of_passengers: Nombre de passagers  
     errors:
       models:
         user:
