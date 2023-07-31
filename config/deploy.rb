@@ -2,7 +2,7 @@
 lock "~> 3.17.3"
 
 set :application, "bus_station"    
-set :repo_url, "https://github.com/AbdoulKamiss/bus_station.git"    
+set :repo_url, "https://github.com/AbdoulKamiss/bus_station_upgrade.git"    
 set :linked_files, %w{config/secrets.yml}   
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}   
 set :keep_releases, 5   
