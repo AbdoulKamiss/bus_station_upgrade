@@ -18,9 +18,9 @@ $ticket-border: 1px dashed #b3b3b3;
   display: grid;
   grid-template-columns: 1.1fr 1fr 1fr 1fr 0.9fr 0.8fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  background-color: #fdfdfd;
+  background-color: #ECF0F1;
   margin-top: 4vh;
-  border: 1px solid #cecece;
+  border: 1px solid black;
 }
 
 #ticket-mini{
@@ -145,7 +145,7 @@ $ticket-border: 1px dashed #b3b3b3;
   }
   #ticket-mini{
     display: unset;
-    background-color: #fdfdfd;
+    background-color: #ECF0F1;
   }
 }
 
@@ -161,6 +161,6 @@ $ticket-border: 1px dashed #b3b3b3;
   }
   #ticket-mini{
     display: unset;
-    background-color: #fdfdfd;
+    background-color: #ECF0F1;
   }
 }
