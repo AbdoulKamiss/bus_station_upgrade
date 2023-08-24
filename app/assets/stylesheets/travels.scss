@@ -25,3 +25,7 @@ select#travel_destination_station_id{
     border: #d2d2d3 solid 1px;
     background: #fff;
 }
+#card-hover:hover{
+    transition: transform 0.5s;
+    transform: scale(1.05);
+}

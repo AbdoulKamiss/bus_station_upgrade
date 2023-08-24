@@ -15,7 +15,7 @@
          <% @bookings.each do |booking| %>
             <% if booking.travel.date > Date.today %>
                <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-3">
-                  <section class="card bg-light text-dark">
+                  <section class="card bg-light text-dark" id="card-hover">
                      <div class="card-body">
                         <p class="d-flex justify-content-around"><%= booking.travel.starting_station.city %> <i class="bi bi-bus-front"></i> <%= booking.travel.destination_station.city %></p>
                         <p class="d-flex justify-content-around">Départ prévu le <%= booking.travel.formatted_date %> à <%= booking.travel.formatted_time %></p>
